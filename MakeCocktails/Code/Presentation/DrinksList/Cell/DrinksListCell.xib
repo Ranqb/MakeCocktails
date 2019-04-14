@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7W2-4c-JC8" customClass="DrinksListCell" customModule="MakeCocktails" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="166" height="249"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="166" height="249"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2GS-jc-rRv">
+                        <rect key="frame" x="0.0" y="0.0" width="166" height="249"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drink category" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6nN-hL-E2U">
+                                <rect key="frame" x="8" y="214" width="150" height="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GCS-KY-3qA">
+                                <rect key="frame" x="0.0" y="0.0" width="166" height="149.5"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drink name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPR-Ra-vhq">
+                                <rect key="frame" x="8" y="159.5" width="150" height="49.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="GCS-KY-3qA" firstAttribute="leading" secondItem="2GS-jc-rRv" secondAttribute="leading" id="4az-hR-Suv"/>
+                            <constraint firstAttribute="trailing" secondItem="pPR-Ra-vhq" secondAttribute="trailing" constant="8" id="8QG-Yv-lcA"/>
+                            <constraint firstItem="6nN-hL-E2U" firstAttribute="top" secondItem="pPR-Ra-vhq" secondAttribute="bottom" constant="5" id="AHS-7r-7ai"/>
+                            <constraint firstItem="pPR-Ra-vhq" firstAttribute="top" secondItem="GCS-KY-3qA" secondAttribute="bottom" constant="10" id="KqC-uR-86N"/>
+                            <constraint firstItem="GCS-KY-3qA" firstAttribute="height" secondItem="2GS-jc-rRv" secondAttribute="height" multiplier="0.6" id="M6L-ut-DXO"/>
+                            <constraint firstAttribute="bottom" secondItem="6nN-hL-E2U" secondAttribute="bottom" constant="10" id="QFD-qW-SEQ"/>
+                            <constraint firstItem="6nN-hL-E2U" firstAttribute="leading" secondItem="2GS-jc-rRv" secondAttribute="leading" constant="8" id="UQx-Pf-x4T"/>
+                            <constraint firstAttribute="trailing" secondItem="6nN-hL-E2U" secondAttribute="trailing" constant="8" id="Y7a-Qb-dft"/>
+                            <constraint firstItem="GCS-KY-3qA" firstAttribute="top" secondItem="2GS-jc-rRv" secondAttribute="top" id="YlA-1g-Qp6"/>
+                            <constraint firstAttribute="trailing" secondItem="GCS-KY-3qA" secondAttribute="trailing" id="Zb9-N4-plD"/>
+                            <constraint firstItem="pPR-Ra-vhq" firstAttribute="height" secondItem="2GS-jc-rRv" secondAttribute="height" multiplier="0.2" id="jVX-lc-hSt"/>
+                            <constraint firstItem="pPR-Ra-vhq" firstAttribute="leading" secondItem="2GS-jc-rRv" secondAttribute="leading" constant="8" id="uNV-PK-IKv"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="2GS-jc-rRv" firstAttribute="top" secondItem="7W2-4c-JC8" secondAttribute="top" id="0Gx-4Y-qBc"/>
+                <constraint firstItem="2GS-jc-rRv" firstAttribute="top" secondItem="7W2-4c-JC8" secondAttribute="top" id="1KR-wf-Mlv"/>
+                <constraint firstAttribute="bottom" secondItem="2GS-jc-rRv" secondAttribute="bottom" id="XCc-hP-Jo1"/>
+                <constraint firstItem="2GS-jc-rRv" firstAttribute="leading" secondItem="7W2-4c-JC8" secondAttribute="leading" id="etw-89-vQ9"/>
+                <constraint firstAttribute="trailing" secondItem="2GS-jc-rRv" secondAttribute="trailing" id="mNn-IP-0Jh"/>
+                <constraint firstItem="2GS-jc-rRv" firstAttribute="leading" secondItem="7W2-4c-JC8" secondAttribute="leading" id="oeh-IQ-glg"/>
+                <constraint firstAttribute="bottom" secondItem="2GS-jc-rRv" secondAttribute="bottom" id="s4Z-qj-Zho"/>
+                <constraint firstAttribute="trailing" secondItem="2GS-jc-rRv" secondAttribute="trailing" id="yHY-a9-UZ2"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="g6A-YI-oyp"/>
+            <connections>
+                <outlet property="drinkCategoryLabel" destination="6nN-hL-E2U" id="Hw0-cS-3OX"/>
+                <outlet property="drinkImageView" destination="GCS-KY-3qA" id="9RJ-pY-7mk"/>
+                <outlet property="drinkNameLabel" destination="pPR-Ra-vhq" id="86A-pd-qYu"/>
+            </connections>
+            <point key="canvasLocation" x="124.8" y="48.575712143928037"/>
+        </collectionViewCell>
+    </objects>
+</document>
