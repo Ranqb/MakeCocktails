@@ -14,28 +14,32 @@ import UIKit
 
 protocol DrinksListBusinessLogic
 {
-  func doSomething(request: DrinksList.Something.Request)
+    func fetchDrinks(request: DrinksList.FetchDrinks.Request)
+    func selectDrinks(request: DrinksList.SelectDrink.Request)
+    
 }
 
 protocol DrinksListDataStore
 {
-  //var name: String { get set }
+    var drinkID: String? {get set}
 }
 
 class DrinksListInteractor: DrinksListBusinessLogic, DrinksListDataStore
 {
-  var presenter: DrinksListPresentationLogic?
-  var worker: DrinksListWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: DrinksList.Something.Request)
-  {
-    worker = DrinksListWorker()
-    worker?.doSomeWork()
+    var drinkID: String?
     
-    let response = DrinksList.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    var presenter: DrinksListPresentationLogic?
+    private var apiWorker: DrinksListWorker = DrinksListWorker(service: APIService())
+    
+    func fetchDrinks(request: DrinksList.FetchDrinks.Request) {
+        apiWorker.getPopularDrinks { (result) in
+            let response = DrinksList.FetchDrinks.Response(result: result)
+            self.presenter?.presentDrinks(response: response)
+        }
+    }
+    
+    func selectDrinks(request: DrinksList.SelectDrink.Request) {
+        drinkID = request.drinkID
+    }
 }
+

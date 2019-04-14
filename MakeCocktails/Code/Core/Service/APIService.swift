@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-class APIService {
+class APIService: ServicesProtocol {
     
     func getPopularDrinks(completion: @escaping (Result<[Drink]?>) -> Void) {
         guard let url = URL(string: baseURL+popular) else {return}

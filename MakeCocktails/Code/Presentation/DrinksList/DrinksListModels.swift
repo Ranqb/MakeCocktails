@@ -12,41 +12,43 @@
 
 import UIKit
 
-typealias DisplayedDrink = DrinksList.FetchDrinks.ViewModel.Success.DispayedDrink
+typealias DisplayedDrink = DrinksList.FetchDrinks.ViewModel.Success.DisplayedDrink
 
 enum DrinksList
 {
-  // MARK: Use cases
-  
-  enum FetchDrinks
-  {
-    struct Request{}
+    // MARK: Use cases
     
-    struct Response{
-        let result: Result<[Drink?]>
-    }
-    
-    struct ViewModel{
-        struct Success {
-            struct DispayedDrink {
-                let drinkName: String
-                let drinkID: String
-                let imageURL: String
-                let category: String
-                init(with drinkModel: Drink) {
-                    drinkName = drinkModel.name ?? ""
-                    drinkID = drinkModel.id ?? ""
-                    imageURL = drinkModel.imageURL ?? ""
-                    category = drinkModel.category ?? ""
+    enum FetchDrinks
+    {
+        struct Request{}
+        
+        struct Response{
+            let result: Result<[Drink]?>
+        }
+        
+        struct ViewModel{
+            struct Success {
+                struct DisplayedDrink {
+                    let drinkName: String
+                    let drinkID: String
+                    let imageURL: String
+                    let category: String
+                    init(with drinkModel: Drink) {
+                        drinkName = drinkModel.name ?? ""
+                        drinkID = drinkModel.id ?? ""
+                        imageURL = drinkModel.imageURL ?? ""
+                        category = drinkModel.category ?? ""
+                    }
                 }
+                let displayedDrinks: [DisplayedDrink]
             }
-            let dispayedDrink: [DispayedDrink]
+            struct Failure {
+                let errorViewModel: ErrorViewModel
+            }
         }
-        struct Failure {
-            let errorViewModel: ErrorViewModel
-        }
+        
+        
     }
-    
     enum SelectDrink {
         struct Request {
             let drinkID: String
@@ -54,6 +56,6 @@ enum DrinksList
         struct Response {}
         struct ViewModel {}
     }
-  }
 }
+
 

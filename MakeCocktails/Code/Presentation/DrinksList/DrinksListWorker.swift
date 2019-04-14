@@ -14,7 +14,23 @@ import UIKit
 
 class DrinksListWorker
 {
-  func doSomeWork()
-  {
-  }
+    // MARK: Properties
+    
+    var service: ServicesProtocol
+    
+    // MARK: Initialization
+    
+    init(service: ServicesProtocol) {
+        self.service = service
+    }
+    
+    // MARK: MainScreenBusinessLogic
+    
+    func getPopularDrinks(completion: @escaping (Result<[Drink]?>) -> Void) {
+        service.getPopularDrinks { (result) in
+            DispatchQueue.main.async {
+                completion(result)
+            }
+        }
+    }
 }

@@ -36,14 +36,14 @@ class DrinksListPresenter: DrinksListPresentationLogic
     // MARK: Private Helpers
     
     private func handleSuccessFetchedDrinks(_ drinks: [Drink]?) {
-        guard let artists = artists else { return }
-        var displayedArtists: [DisplayedArtist] = []
-        for artist in artists {
-            let displayedArtist = DisplayedArtist(with: artist)
-            displayedArtists.append(displayedArtist)
+        guard let drinks = drinks else { return }
+        var displayedDrinks: [DisplayedDrink] = []
+        for drink in drinks {
+            let displayedDrink = DisplayedDrink(with: drink)
+            displayedDrinks.append(displayedDrink)
         }
-        let viewModel = SearchScreen.FetchArtists.ViewModel.Success(displayedArtists: displayedArtists)
-        viewController?.displayArtists(viewModel: viewModel)
+        let viewModel = DrinksList.FetchDrinks.ViewModel.Success(displayedDrinks: displayedDrinks)
+        viewController?.displayDrinks(viewModel: viewModel)
     }
     
     private func handleError(_ error: Error) {

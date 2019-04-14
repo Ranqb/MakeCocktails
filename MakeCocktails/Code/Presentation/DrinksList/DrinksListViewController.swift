@@ -13,7 +13,7 @@
 import UIKit
 
 protocol DrinksListDisplayLogic: class {
-    func displayDrinks(viewModel: DrinksList.FetchDrinks.ViewModel)
+    func displayDrinks(viewModel: DrinksList.FetchDrinks.ViewModel.Success)
     func displayError(viewModel: DrinksList.FetchDrinks.ViewModel.Failure)
 }
 
@@ -118,7 +118,7 @@ class DrinksListViewController: ViewController
     {
         displayLoading()
         let request = DrinksList.FetchDrinks.Request()
-        interactor?.doSomething(request: request)
+        interactor?.fetchDrinks(request: request)
     }
     
 
@@ -127,9 +127,11 @@ class DrinksListViewController: ViewController
 // MARK: DrinksListDisplayLogic
 extension DrinksListViewController: DrinksListDisplayLogic {
     
-    func displayDrinks(viewModel: DrinksList.FetchDrinks.ViewModel)
+    func displayDrinks(viewModel: DrinksList.FetchDrinks.ViewModel.Success)
     {
-        //nameTextField.text = viewModel.name
+        displayContent()
+        drinks = viewModel.displayedDrinks
+        collectionView.reloadData()
     }
     
     func displayError(viewModel:  DrinksList.FetchDrinks.ViewModel.Failure) {
