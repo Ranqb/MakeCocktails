@@ -10,6 +10,7 @@ import Foundation
 
 protocol ServicesProtocol {
     func getPopularDrinks(completion: @escaping (Result<[Drink]?>) -> Void)
+    func getDrink(by id: String,completion: @escaping (Result<Drink?>) -> Void) 
 //    func fetchAlbums(completion: @escaping (Result<[AlbumDetailsModel?]>) -> Void)
 //    func fetchAlbumsFor(artistID: String, completion: @escaping (Result<[AlbumDetailsModel]?>) -> Void)
 //    func fetchArtists(with name: String, completion: @escaping (Result<[ArtistModel]?>) -> Void)

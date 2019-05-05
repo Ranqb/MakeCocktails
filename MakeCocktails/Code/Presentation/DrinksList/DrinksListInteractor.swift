@@ -15,7 +15,7 @@ import UIKit
 protocol DrinksListBusinessLogic
 {
     func fetchDrinks(request: DrinksList.FetchDrinks.Request)
-    func selectDrinks(request: DrinksList.SelectDrink.Request)
+    func selectDrink(request: DrinksList.SelectDrink.Request)
     
 }
 
@@ -38,7 +38,7 @@ class DrinksListInteractor: DrinksListBusinessLogic, DrinksListDataStore
         }
     }
     
-    func selectDrinks(request: DrinksList.SelectDrink.Request) {
+    func selectDrink(request: DrinksList.SelectDrink.Request) {
         drinkID = request.drinkID
     }
 }

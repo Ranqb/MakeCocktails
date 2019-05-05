@@ -11,6 +11,7 @@ import AlamofireImage
 
 class DrinksListCell: UICollectionViewCell, NibLoadable {
     
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var drinkImageView: UIImageView!
     @IBOutlet weak var drinkNameLabel: UILabel!
     @IBOutlet weak var drinkCategoryLabel: UILabel!
@@ -20,10 +21,12 @@ class DrinksListCell: UICollectionViewCell, NibLoadable {
         self.layer.addShadow()
         self.layer.roundCorners(radius: cornerRadius)
         self.clipsToBounds = true
+        self.backgroundImageView.contentMode = .scaleAspectFit;
         
     }
     func configure(_ drink: DisplayedDrink) {
         drinkImageView.af_setImage(withURL: URL(string: drink.imageURL)!)
+        backgroundImageView.af_setImage(withURL: URL(string: drink.imageURL)!)
         drinkNameLabel.text = drink.drinkName
         drinkCategoryLabel.text = drink.category
     }

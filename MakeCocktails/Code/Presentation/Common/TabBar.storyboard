@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vGd-St-noi">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--DrinksListViewController-->
+        <scene sceneID="FRF-RN-XcI">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DrinksListViewController" id="QbG-Bk-f9w" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="yLB-46-A0T"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cal-gB-rap" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-334" y="-667"/>
+        </scene>
+        <!--DrinkDetailViewController-->
+        <scene sceneID="lkU-0x-biP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DrinkDetailViewController" id="Wl8-ow-Tva" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="rTh-VJ-Y4g"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SSH-3c-2qd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-325" y="-497"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="XnB-7C-nQd">
+            <objects>
+                <tabBarController id="vGd-St-noi" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="i83-io-dZa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.055379219350000002" green="0.13325604799999999" blue="0.2372736037" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="QbG-Bk-f9w" kind="relationship" relationship="viewControllers" id="cru-JA-nuF"/>
+                        <segue destination="Wl8-ow-Tva" kind="relationship" relationship="viewControllers" id="RDQ-Rl-ZE6"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CIn-6v-Upd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1079" y="-349"/>
+        </scene>
+    </scenes>
+</document>

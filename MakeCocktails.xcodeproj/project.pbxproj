@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		1D77738A4DA85AA9A3D0561D /* Pods_MakeCocktails.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F489B195C62DECBB853FDCF /* Pods_MakeCocktails.framework */; };
+		554C5229227E2A8A00091784 /* DrinkDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554C5223227E2A8A00091784 /* DrinkDetailPresenter.swift */; };
+		554C522A227E2A8A00091784 /* DrinkDetailWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554C5224227E2A8A00091784 /* DrinkDetailWorker.swift */; };
+		554C522B227E2A8A00091784 /* DrinkDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554C5225227E2A8A00091784 /* DrinkDetailRouter.swift */; };
+		554C522C227E2A8A00091784 /* DrinkDetailModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554C5226227E2A8A00091784 /* DrinkDetailModels.swift */; };
+		554C522D227E2A8A00091784 /* DrinkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554C5227227E2A8A00091784 /* DrinkDetailViewController.swift */; };
+		554C522E227E2A8A00091784 /* DrinkDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554C5228227E2A8A00091784 /* DrinkDetailInteractor.swift */; };
+		554C5230227E2EF100091784 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 554C522F227E2EF100091784 /* TabBar.storyboard */; };
+		554C5234227E30CB00091784 /* DrinkDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 554C5233227E30CB00091784 /* DrinkDetailViewController.storyboard */; };
 		5578836E22451D7100F508B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5578836D22451D7100F508B6 /* AppDelegate.swift */; };
 		5578837022451D7100F508B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5578836F22451D7100F508B6 /* ViewController.swift */; };
 		5578837322451D7100F508B6 /* DrinksListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5578837122451D7100F508B6 /* DrinksListViewController.storyboard */; };
@@ -66,6 +74,14 @@
 		1740B0F25676B8470F801D17 /* Pods-MakeCocktailsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MakeCocktailsTests.debug.xcconfig"; path = "Target Support Files/Pods-MakeCocktailsTests/Pods-MakeCocktailsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		42BB34113C2D8BB5049E74CF /* Pods_MakeCocktailsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MakeCocktailsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4712B0194B302473E78C61AA /* Pods_MakeCocktailsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MakeCocktailsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		554C5223227E2A8A00091784 /* DrinkDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDetailPresenter.swift; sourceTree = "<group>"; };
+		554C5224227E2A8A00091784 /* DrinkDetailWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDetailWorker.swift; sourceTree = "<group>"; };
+		554C5225227E2A8A00091784 /* DrinkDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDetailRouter.swift; sourceTree = "<group>"; };
+		554C5226227E2A8A00091784 /* DrinkDetailModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDetailModels.swift; sourceTree = "<group>"; };
+		554C5227227E2A8A00091784 /* DrinkDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDetailViewController.swift; sourceTree = "<group>"; };
+		554C5228227E2A8A00091784 /* DrinkDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDetailInteractor.swift; sourceTree = "<group>"; };
+		554C522F227E2EF100091784 /* TabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
+		554C5233227E30CB00091784 /* DrinkDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DrinkDetailViewController.storyboard; sourceTree = "<group>"; };
 		5578836A22451D7100F508B6 /* MakeCocktails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MakeCocktails.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5578836D22451D7100F508B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5578836F22451D7100F508B6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +161,20 @@
 				4712B0194B302473E78C61AA /* Pods_MakeCocktailsUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		554C5222227E28C800091784 /* DrinkScreen */ = {
+			isa = PBXGroup;
+			children = (
+				554C5233227E30CB00091784 /* DrinkDetailViewController.storyboard */,
+				554C5223227E2A8A00091784 /* DrinkDetailPresenter.swift */,
+				554C5224227E2A8A00091784 /* DrinkDetailWorker.swift */,
+				554C5225227E2A8A00091784 /* DrinkDetailRouter.swift */,
+				554C5226227E2A8A00091784 /* DrinkDetailModels.swift */,
+				554C5227227E2A8A00091784 /* DrinkDetailViewController.swift */,
+				554C5228227E2A8A00091784 /* DrinkDetailInteractor.swift */,
+			);
+			path = DrinkScreen;
 			sourceTree = "<group>";
 		};
 		5578836122451D7000F508B6 = {
@@ -229,8 +259,9 @@
 		557883A522451EEA00F508B6 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				557883CA2245777300F508B6 /* DrinksList */,
 				557883B622453CF100F508B6 /* Common */,
+				554C5222227E28C800091784 /* DrinkScreen */,
+				557883CA2245777300F508B6 /* DrinksList */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -300,6 +331,7 @@
 			children = (
 				557883B722453D0800F508B6 /* ErrorViewModel.swift */,
 				5578836F22451D7100F508B6 /* ViewController.swift */,
+				554C522F227E2EF100091784 /* TabBar.storyboard */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -473,9 +505,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				554C5230227E2EF100091784 /* TabBar.storyboard in Resources */,
 				5578837B22451D7500F508B6 /* LaunchScreen.storyboard in Resources */,
 				5578837822451D7500F508B6 /* Assets.xcassets in Resources */,
 				557883DB2246C38100F508B6 /* DrinksListCell.xib in Resources */,
+				554C5234227E30CB00091784 /* DrinkDetailViewController.storyboard in Resources */,
 				5578837322451D7100F508B6 /* DrinksListViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -601,6 +635,7 @@
 				557883B822453D0800F508B6 /* ErrorViewModel.swift in Sources */,
 				5578837022451D7100F508B6 /* ViewController.swift in Sources */,
 				557883C3224573C600F508B6 /* UICollectionView+CellRegistrationAndDequeueing.swift in Sources */,
+				554C5229227E2A8A00091784 /* DrinkDetailPresenter.swift in Sources */,
 				5578836E22451D7100F508B6 /* AppDelegate.swift in Sources */,
 				557883BB22456DC200F508B6 /* NibLoadable.swift in Sources */,
 				557883D6224577A500F508B6 /* DrinksListInteractor.swift in Sources */,
@@ -610,14 +645,19 @@
 				5578837622451D7100F508B6 /* MakeCocktails.xcdatamodeld in Sources */,
 				557883C72245740E00F508B6 /* UIViewController+Storyboard.swift in Sources */,
 				557883D1224577A500F508B6 /* DrinksListPresenter.swift in Sources */,
+				554C522A227E2A8A00091784 /* DrinkDetailWorker.swift in Sources */,
 				557883AE22453C3F00F508B6 /* DataBaseService.swift in Sources */,
+				554C522D227E2A8A00091784 /* DrinkDetailViewController.swift in Sources */,
 				557883DF2246C8B900F508B6 /* CALayer+.swift in Sources */,
 				557883B322453C7100F508B6 /* Result.swift in Sources */,
+				554C522E227E2A8A00091784 /* DrinkDetailInteractor.swift in Sources */,
 				557883DD2246C4CB00F508B6 /* DrinksListCell.swift in Sources */,
 				557883D2224577A500F508B6 /* DrinksListWorker.swift in Sources */,
+				554C522B227E2A8A00091784 /* DrinkDetailRouter.swift in Sources */,
 				557883BF22456E9600F508B6 /* UITableView+CellRegistrationAndDequeueing.swift in Sources */,
 				557883C92245743200F508B6 /* Notifications+KeyboardHeight.swift in Sources */,
 				557883D5224577A500F508B6 /* DrinksListViewController.swift in Sources */,
+				554C522C227E2A8A00091784 /* DrinkDetailModels.swift in Sources */,
 				557883D82245787D00F508B6 /* Drink.swift in Sources */,
 				557883D4224577A500F508B6 /* DrinksListModels.swift in Sources */,
 				557883B022453C5000F508B6 /* APIService.swift in Sources */,
@@ -801,6 +841,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9LS53ZHYBD;
 				INFOPLIST_FILE = "$(SRCROOT)/MakeCocktails/SupportingFiles/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -820,6 +861,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9LS53ZHYBD;
 				INFOPLIST_FILE = "$(SRCROOT)/MakeCocktails/SupportingFiles/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

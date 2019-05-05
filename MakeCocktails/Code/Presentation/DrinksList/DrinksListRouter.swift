@@ -28,33 +28,31 @@ class DrinksListRouter: NSObject, DrinksListRoutingLogic, DrinksListDataPassing
   var dataStore: DrinksListDataStore?
   
   // MARK: Routing
-  
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-  //{
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
+    
+    func routeToDetails() {
+        let destination: DrinkDetailViewController = DrinkDetailViewController.fromStoryboard()
+        guard let source = viewController,
+            let sourceDataStore = dataStore,
+            var destinationDataStore = destination.router?.dataStore else {
+                assertionFailure("Could not instantiate required variables for routing")
+                return
+        }
+        passDataToDetails(source: sourceDataStore, destination: &destinationDataStore)
+        navigateToDetails(source: source, destination: destination)
+    }
 
-  // MARK: Navigation
+//   MARK: Navigation
   
-  //func navigateToSomewhere(source: DrinksListViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
+    private func navigateToDetails(source: UIViewController?, destination: UIViewController) {
+        source?.navigationController?.pushViewController(destination, animated: true)
+    }
   
-  // MARK: Passing data
+//   MARK: Passing data
   
-  //func passDataToSomewhere(source: DrinksListDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
+    private func passDataToDetails(
+        source: DrinksListDataStore,
+        destination: inout DrinkDetailDataStore
+        ) {
+        destination.drinkID = source.drinkID
+    }
 }

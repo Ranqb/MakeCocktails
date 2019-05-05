@@ -24,7 +24,6 @@ class DrinksListViewController: ViewController
 //    private let searchController = UISearchController(searchResultsController: nil)
     private var searchDelayTimer: Timer?
     private var drinks: [DisplayedDrink] = []
-    
     // MARK: IBOutlets
     
     @IBOutlet var collectionView: UICollectionView!
@@ -78,7 +77,7 @@ class DrinksListViewController: ViewController
     {
         super.viewDidLoad()
         fetchDrinks()
-        self.title = "Search drink"
+        self.navigationItem.title = "Search drink"
         setupTableView()
 //        setupSearchController()
         let api = APIService()
@@ -142,7 +141,12 @@ extension DrinksListViewController: DrinksListDisplayLogic {
 
 // MARK: UICollectionView
 
-extension DrinksListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension DrinksListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    var leftIndent: CGFloat{return CGFloat(10)}
+    var rightIndent: CGFloat{return CGFloat(10)}
+    var topAndBottomIndent: CGFloat{return CGFloat(10)}
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return drinks.count
     }
@@ -153,11 +157,41 @@ extension DrinksListViewController: UICollectionViewDelegate, UICollectionViewDa
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        cell.alpha = 0
+        cell.layer.transform = CATransform3DMakeScale(0.5, 0.5, 0.5)
+        UIView.animate(withDuration: 0.4, animations: { () -> Void in
+            cell.alpha = 1
+            cell.layer.transform = CATransform3DScale(CATransform3DIdentity, 1, 1, 1)
+        })
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        let request = DrinksList.SelectDrink.Request(drinkID: drinks[indexPath.row].drinkID)
+        interactor?.selectDrink(request: request)
+        router.
 //        let request = MainScreen.SelectAlbum.Request(albumID: albums[indexPath.row].albumID)
 //        interactor?.selectAlbum(request: request)
 //        router?.routeToDetails()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let numberOfItemsPerRow = 2
+        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+        let totalSpace = leftIndent
+            + rightIndent
+            + (flowLayout.minimumInteritemSpacing * CGFloat(numberOfItemsPerRow - 1))
+        let size = Int((collectionView.bounds.width - totalSpace) / CGFloat(numberOfItemsPerRow))
+        
+        return CGSize(width: size, height: size+(size/2))
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 10.0
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets.init(top: topAndBottomIndent, left: leftIndent, bottom: topAndBottomIndent, right: rightIndent)
     }
 }
 
