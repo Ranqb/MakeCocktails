@@ -9,29 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MakeCocktails/Code/Presentation/DrinksList/DrinksListViewController.swift"
-            timestampString = "578762426.060087"
+            filePath = "MakeCocktails/Code/Presentation/DrinkScreen/DrinkDetailViewController.swift"
+            timestampString = "579388582.218755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
-            landmarkName = "collectionView(_:layout:sizeForItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MakeCocktails/Code/Presentation/DrinksList/DrinksListViewController.swift"
-            timestampString = "578762426.060775"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
-            landmarkName = "collectionView(_:layout:minimumInteritemSpacingForSectionAt:)"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,7 +26,55 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MakeCocktails/Code/Core/Service/APIService.swift"
-            timestampString = "578773134.030063"
+            timestampString = "579388582.218872"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "getDrink(by:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MakeCocktails.APIService.getDrink(by: Swift.String, completion: (MakeCocktails.Result&lt;Swift.Optional&lt;MakeCocktails.Drink&gt;&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MakeCocktails"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Andrey/Desktop/MakeCocktails/MakeCocktails/Code/Core/Service/APIService.swift"
+                  timestampString = "579388445.74684"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "266">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Foundation.Data&gt;) -&gt; () in MakeCocktails.APIService.getDrink(by: Swift.String, completion: (MakeCocktails.Result&lt;Swift.Optional&lt;MakeCocktails.Drink&gt;&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "MakeCocktails"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Andrey/Desktop/MakeCocktails/MakeCocktails/Code/Core/Service/APIService.swift"
+                  timestampString = "579388445.751476"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "76">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MakeCocktails/Code/Core/Service/APIService.swift"
+            timestampString = "579388582.2189569"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"

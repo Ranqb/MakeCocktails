@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="230" id="qlr-kN-Qzo" customClass="DrinkDetailTitleCell" customModule="MakeCocktails" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="230"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qlr-kN-Qzo" id="0ch-B1-DhW">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="229.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zPb-xr-22z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="229.5"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4NV-W7-1st">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="229.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHs-76-YJH">
+                                <rect key="frame" x="8" y="201" width="359" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="ABa-Xs-SmZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drink name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6p-iH-x4M">
+                                <rect key="frame" x="8" y="167" width="359" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="7ls-iD-Xg9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.2430982837" green="0.2430982837" blue="0.2430982837" alpha="0.65094080109999997" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="CHs-76-YJH" firstAttribute="leading" secondItem="4NV-W7-1st" secondAttribute="leading" constant="8" id="PuB-Cf-KZg"/>
+                            <constraint firstItem="b6p-iH-x4M" firstAttribute="leading" secondItem="4NV-W7-1st" secondAttribute="leading" constant="8" id="UdZ-oA-ylA"/>
+                            <constraint firstAttribute="trailing" secondItem="CHs-76-YJH" secondAttribute="trailing" constant="8" id="cUG-FE-VKL"/>
+                            <constraint firstItem="CHs-76-YJH" firstAttribute="top" secondItem="b6p-iH-x4M" secondAttribute="bottom" constant="12" id="iyX-Sa-YxJ"/>
+                            <constraint firstAttribute="bottom" secondItem="CHs-76-YJH" secondAttribute="bottom" constant="11.5" id="nJ5-55-UMV"/>
+                            <constraint firstAttribute="trailing" secondItem="b6p-iH-x4M" secondAttribute="trailing" constant="8" id="yAL-x6-5IL"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="zPb-xr-22z" firstAttribute="top" secondItem="0ch-B1-DhW" secondAttribute="top" id="8eh-9I-qbt"/>
+                    <constraint firstItem="zPb-xr-22z" firstAttribute="leading" secondItem="0ch-B1-DhW" secondAttribute="leading" id="GWW-bE-4pt"/>
+                    <constraint firstAttribute="trailing" secondItem="zPb-xr-22z" secondAttribute="trailing" id="JhA-es-YTw"/>
+                    <constraint firstAttribute="bottom" secondItem="4NV-W7-1st" secondAttribute="bottom" id="M2T-rw-ICY"/>
+                    <constraint firstItem="4NV-W7-1st" firstAttribute="leading" secondItem="0ch-B1-DhW" secondAttribute="leading" id="hUz-bT-vX4"/>
+                    <constraint firstAttribute="bottom" secondItem="zPb-xr-22z" secondAttribute="bottom" id="iiY-23-w72"/>
+                    <constraint firstItem="4NV-W7-1st" firstAttribute="top" secondItem="0ch-B1-DhW" secondAttribute="top" id="m6e-OB-e6I"/>
+                    <constraint firstAttribute="trailing" secondItem="4NV-W7-1st" secondAttribute="trailing" id="xgc-5F-baf"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="categoryLabel" destination="CHs-76-YJH" id="cpz-Vj-jun"/>
+                <outlet property="drinkImageView" destination="zPb-xr-22z" id="8nQ-0A-9nP"/>
+                <outlet property="nameLabel" destination="b6p-iH-x4M" id="oHc-9a-qoS"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

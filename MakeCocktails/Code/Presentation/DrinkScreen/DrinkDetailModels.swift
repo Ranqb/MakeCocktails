@@ -65,7 +65,7 @@ enum DrinkDetail
                     let measure14: String
                     let measure15: String
 
-                    init(with drinkModel: Drink) {
+                    init?(with drinkModel: Drink) {
                         id = drinkModel.id ?? ""
                         name = drinkModel.name ?? ""
                         category = drinkModel.category ?? ""

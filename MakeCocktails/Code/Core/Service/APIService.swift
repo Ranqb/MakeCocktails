@@ -39,9 +39,8 @@ class APIService: ServicesProtocol {
             case .success(let data):
                 do {
                     let decoder = JSONDecoder()
-                    let drink = try decoder.decode(Drink.self, from: data)
-                    completion(Result.success(drink))
-                    
+                    let drinks = try decoder.decode(ResultDrinks.self, from: data)
+                    completion(Result.success(drinks.drinks.first))
                 } catch let err {
                     print("Err", err)
                 }

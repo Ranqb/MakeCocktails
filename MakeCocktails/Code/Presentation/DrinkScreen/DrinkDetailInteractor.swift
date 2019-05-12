@@ -14,7 +14,7 @@ import UIKit
 
 protocol DrinkDetailBusinessLogic
 {
-    func fetchAlbumDetail(request: DrinkDetail.FetchDrink.Request)
+    func fetchDrinkDetail(request: DrinkDetail.FetchDrink.Request)
 }
 
 protocol DrinkDetailDataStore
@@ -24,19 +24,24 @@ protocol DrinkDetailDataStore
 
 class DrinkDetailInteractor: DrinkDetailBusinessLogic, DrinkDetailDataStore
 {
+    // MARK: Properties
+    
     var presenter: DrinkDetailPresentationLogic?
     var apiWorker: DrinkDetailWorker = DrinkDetailWorker(service: APIService())
-    //var name: String = ""
+
+    // MARK: DrinkDetailDataStore
     
-    // MARK: Do something
+    var drinkID: String?
     
-    func doSomething(request: DrinkDetail.Something.Request)
-    {
-        worker = DrinkDetailWorker()
-        worker?.doSomeWork()
-        
-        let response = DrinkDetail.Something.Response()
-        presenter?.presentSomething(response: response)
+    // MARK: Do DrinkDetailBusinessLogic
+    
+    func fetchDrinkDetail(request: DrinkDetail.FetchDrink.Request) {
+        guard let drinkID = drinkID else { return }
+        apiWorker.getDrinkDetail(by: drinkID) { (result) in
+            let response = DrinkDetail.FetchDrink.Response(result: result)
+            self.presenter?.presentDrinkDetail(response: response)
+        }
     }
+
 }
 

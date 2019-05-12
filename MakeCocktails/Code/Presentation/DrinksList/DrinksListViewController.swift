@@ -170,10 +170,8 @@ extension DrinksListViewController: UICollectionViewDelegate, UICollectionViewDa
         collectionView.deselectItem(at: indexPath, animated: true)
         let request = DrinksList.SelectDrink.Request(drinkID: drinks[indexPath.row].drinkID)
         interactor?.selectDrink(request: request)
-        router.
-//        let request = MainScreen.SelectAlbum.Request(albumID: albums[indexPath.row].albumID)
-//        interactor?.selectAlbum(request: request)
-//        router?.routeToDetails()
+        router?.routeToDetails()
+
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

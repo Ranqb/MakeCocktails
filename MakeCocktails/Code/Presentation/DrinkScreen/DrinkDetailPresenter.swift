@@ -14,18 +14,41 @@ import UIKit
 
 protocol DrinkDetailPresentationLogic
 {
-  func presentSomething(response: DrinkDetail.Something.Response)
+    func presentDrinkDetail(response: DrinkDetail.FetchDrink.Response)
 }
 
 class DrinkDetailPresenter: DrinkDetailPresentationLogic
 {
-  weak var viewController: DrinkDetailDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: DrinkDetail.Something.Response)
-  {
-    let viewModel = DrinkDetail.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+    
+    //MARK: Properties
+    
+    weak var viewController: DrinkDetailDisplayLogic?
+    
+    // MARK: DrinkDetailPresentationLogic
+    
+    func presentDrinkDetail(response: DrinkDetail.FetchDrink.Response) {
+        switch response.result {
+        case .success(let drink):
+            handleSuccessGetDrink(drink)
+        case .failure(let error):
+            handleError(error)
+        }
+    }
+    
+    // MARK: Private Helpers
+    
+    private func handleSuccessGetDrink(_ drink: Drink?) {
+        guard let drink = drink else { return }
+        guard let displayedDrink = DrinkDetail.FetchDrink.ViewModel.Success.DisplayedDrink(with: drink) else { return }
+        let viewModel = DrinkDetail.FetchDrink.ViewModel.Success(displayedDrink: displayedDrink)
+        viewController?.displayDrink(viewModel: viewModel)
+    }
+    
+    private func handleError(_ error: Error) {
+        let errorViewModel = ErrorViewModel(error: error)
+        let viewModel = DrinkDetail.FetchDrink.ViewModel.Failure(errorViewModel: errorViewModel)
+        viewController?.displayError(viewModel: viewModel)
+    }
+
 }
+

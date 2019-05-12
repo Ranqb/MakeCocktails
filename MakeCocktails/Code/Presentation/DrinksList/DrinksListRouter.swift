@@ -14,20 +14,20 @@ import UIKit
 
 @objc protocol DrinksListRoutingLogic
 {
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+    func routeToDetails()
 }
 
 protocol DrinksListDataPassing
 {
-  var dataStore: DrinksListDataStore? { get }
+    var dataStore: DrinksListDataStore? { get }
 }
 
 class DrinksListRouter: NSObject, DrinksListRoutingLogic, DrinksListDataPassing
 {
-  weak var viewController: DrinksListViewController?
-  var dataStore: DrinksListDataStore?
-  
-  // MARK: Routing
+    weak var viewController: DrinksListViewController?
+    var dataStore: DrinksListDataStore?
+    
+    // MARK: Routing
     
     func routeToDetails() {
         let destination: DrinkDetailViewController = DrinkDetailViewController.fromStoryboard()
@@ -40,15 +40,15 @@ class DrinksListRouter: NSObject, DrinksListRoutingLogic, DrinksListDataPassing
         passDataToDetails(source: sourceDataStore, destination: &destinationDataStore)
         navigateToDetails(source: source, destination: destination)
     }
-
-//   MARK: Navigation
-  
+    
+    //   MARK: Navigation
+    
     private func navigateToDetails(source: UIViewController?, destination: UIViewController) {
         source?.navigationController?.pushViewController(destination, animated: true)
     }
-  
-//   MARK: Passing data
-  
+    
+    //   MARK: Passing data
+    
     private func passDataToDetails(
         source: DrinksListDataStore,
         destination: inout DrinkDetailDataStore
@@ -56,3 +56,4 @@ class DrinksListRouter: NSObject, DrinksListRoutingLogic, DrinksListDataPassing
         destination.drinkID = source.drinkID
     }
 }
+
