@@ -21,7 +21,7 @@ class DrinksListViewController: ViewController
 {
     var interactor: DrinksListBusinessLogic?
     var router: (NSObjectProtocol & DrinksListRoutingLogic & DrinksListDataPassing)?
-//    private let searchController = UISearchController(searchResultsController: nil)
+    private let searchController = UISearchController(searchResultsController: nil)
     private var searchDelayTimer: Timer?
     private var drinks: [DisplayedDrink] = []
     // MARK: IBOutlets
@@ -77,27 +77,25 @@ class DrinksListViewController: ViewController
     {
         super.viewDidLoad()
         self.navigationItem.title = "Search drink"
-        fetchDrinks()
+        fetchDrinks(with: "")
         setupTableView()
-//        setupSearchController()
+        setupSearchController()
     }
     
     // MARK: Private Helpers
     
-//    private func setupSearchController() {
-//        searchController.searchBar.sizeToFit()
-//        if #available(iOS 11.0, *) {
-//            navigationItem.searchController = searchController
-//            navigationItem.hidesSearchBarWhenScrolling = false
-//        }
-//        else {
-//            collectionView.header = searchController.searchBar
-//        }
-//        searchController.searchBar.delegate = self
-//        searchController.dimsBackgroundDuringPresentation = false
-//        searchController.hidesNavigationBarDuringPresentation = false
-//        definesPresentationContext = true
-//    }
+    private func setupSearchController() {
+        searchController.searchBar.sizeToFit()
+        searchController.searchBar.tintColor = navTextColor
+        searchController.searchBar.backgroundColor = navBackgroundColor
+        searchController.searchBar.backgroundImage = UIImage()
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.searchBar.delegate = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        definesPresentationContext = true
+    }
     
     private func setupTableView() {
         collectionView.dataSource = self
@@ -109,11 +107,16 @@ class DrinksListViewController: ViewController
     
     //@IBOutlet weak var nameTextField: UITextField!
     
-    func fetchDrinks()
+    func fetchDrinks(with text: String?)
     {
+        guard let text = text else {return}
         displayLoading()
-        let request = DrinksList.FetchDrinks.Request()
+        let request = DrinksList.FetchDrinks.Request(searchText: text)
         interactor?.fetchDrinks(request: request)
+    }
+    
+    @objc fileprivate func searchDrinks(sender: Timer) {
+        fetchDrinks(with: sender.userInfo as? String)
     }
 
 }
@@ -189,14 +192,14 @@ extension DrinksListViewController: UICollectionViewDelegate, UICollectionViewDa
 }
 
 // MARK: UISearchBar
-//
-//extension DrinksListViewController: UISearchBarDelegate {
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-////        searchDelayTimer?.invalidate()
-////        searchDelayTimer = Timer.scheduledTimer(timeInterval: delay, target: self, selector: #selector(searchArtists(sender:)), userInfo: searchText, repeats: false)
-//    }
-//
-//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-////        fetchArtists(with: nil)
-//    }
-//}
+
+extension DrinksListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchDelayTimer?.invalidate()
+        searchDelayTimer = Timer.scheduledTimer(timeInterval: delay, target: self, selector: #selector(searchDrinks(sender:)), userInfo: searchText, repeats: false)
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        fetchDrinks(with: "")
+    }
+}

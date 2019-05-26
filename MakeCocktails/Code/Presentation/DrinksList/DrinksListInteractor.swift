@@ -32,9 +32,16 @@ class DrinksListInteractor: DrinksListBusinessLogic, DrinksListDataStore
     private var apiWorker: DrinksListWorker = DrinksListWorker(service: APIService())
     
     func fetchDrinks(request: DrinksList.FetchDrinks.Request) {
-        apiWorker.getPopularDrinks { (result) in
-            let response = DrinksList.FetchDrinks.Response(result: result)
-            self.presenter?.presentDrinks(response: response)
+        if request.searchText.count > 0 {
+            apiWorker.getDrinks(by: request.searchText) { (result) in
+                let response = DrinksList.FetchDrinks.Response(result: result)
+                self.presenter?.presentDrinks(response: response)
+            }
+        }else{
+            apiWorker.getPopularDrinks { (result) in
+                let response = DrinksList.FetchDrinks.Response(result: result)
+                self.presenter?.presentDrinks(response: response)
+            }
         }
     }
     

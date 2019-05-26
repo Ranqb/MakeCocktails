@@ -33,4 +33,13 @@ class DrinksListWorker
             }
         }
     }
+    
+    func getDrinks(by name: String, completion: @escaping (Result<[Drink]?>) -> Void) {
+        
+        service.getDrinks(by: name) { (result) in
+            DispatchQueue.main.async {
+                completion(result)
+            }
+        }
+    }
 }

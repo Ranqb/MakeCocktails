@@ -31,7 +31,29 @@ class APIService: ServicesProtocol {
         }
     }
     
-    func getDrink(by id: String,completion: @escaping (Result<Drink?>) -> Void) {
+    func getDrinks(by name: String, completion: @escaping (Result<[Drink]?>) -> Void) {
+        let searchName = name.replacingOccurrences(of: " ", with: "_")
+        guard let url = URL(string: baseURL+search+searchName) else {return}
+        
+        Alamofire.request(url).responseData { (response) in
+            switch response.result {
+            case .success(let data):
+                do {
+                    let decoder = JSONDecoder()
+                    let drinks = try decoder.decode(ResultDrinks.self, from: data)
+                    completion(Result.success(drinks.drinks))
+                    
+                } catch let err {
+                    print("Err", err)
+                    completion(Result.success([]))
+                }
+            case .failure(let error):
+                completion(Result.failure(error))
+            }
+        }
+    }
+    
+    func getDrink(by id: String, completion: @escaping (Result<Drink?>) -> Void) {
         guard let url = URL(string: baseURL+lookup+id) else {return}
         
         Alamofire.request(url).responseData { (response) in

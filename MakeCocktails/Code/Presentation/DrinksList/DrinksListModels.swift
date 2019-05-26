@@ -20,7 +20,9 @@ enum DrinksList
     
     enum FetchDrinks
     {
-        struct Request{}
+        struct Request{
+            var searchText: String
+        }
         
         struct Response{
             let result: Result<[Drink]?>

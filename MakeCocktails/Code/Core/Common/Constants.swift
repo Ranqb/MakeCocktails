@@ -12,10 +12,13 @@ public typealias VoidResult = Result<Void>
 
 let baseURL = "https://www.thecocktaildb.com/api/json/v2/1/"
 let popular = "popular.php"
+let search = "search.php?s="
 let alcoholicDrink = "filter.php?a=Alcoholic"
 let nonAlcoholicDrink = "filter.php?a=Non_Alcoholic"
 let lookup = "lookup.php?i="
 let catories = "list.php?c=list"
+
+let delay = 0.5
 
 let cornerRadius = CGFloat(8)
 let statusBarStyle: UIStatusBarStyle = .default
