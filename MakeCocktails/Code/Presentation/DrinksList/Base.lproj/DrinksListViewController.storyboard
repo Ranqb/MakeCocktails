@@ -39,7 +39,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Msm-ji-pdC"/>
+                    <navigationItem key="navigationItem" id="Msm-ji-pdC">
+                        <barButtonItem key="backBarButtonItem" title=" " id="A8T-lG-5dI"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="bottomConstraint" destination="0hs-Cv-YHQ" id="lVV-yZ-Yb3"/>
                         <outlet property="collectionView" destination="jnU-lL-fn6" id="Zm7-JE-JcA"/>

@@ -20,14 +20,14 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="f56-lb-mxL">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.93717283009999997" green="0.93730741740000001" blue="0.93714338539999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="f0x-GM-Tdo" id="Col-6M-4Qg"/>
                                     <outlet property="delegate" destination="f0x-GM-Tdo" id="D2A-62-snC"/>
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="f56-lb-mxL" firstAttribute="bottom" secondItem="G46-N2-eiT" secondAttribute="bottom" id="3ih-7m-QM3"/>
                             <constraint firstItem="f56-lb-mxL" firstAttribute="trailing" secondItem="G46-N2-eiT" secondAttribute="trailing" id="9hP-OP-MdM"/>

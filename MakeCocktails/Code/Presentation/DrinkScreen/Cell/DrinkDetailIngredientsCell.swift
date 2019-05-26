@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DrinkDetailIngredientsCell: UITableViewCell {
+class DrinkDetailIngredientsCell: UITableViewCell, NibLoadable {
 
     @IBOutlet weak var ingredientImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -25,10 +25,11 @@ class DrinkDetailIngredientsCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configure(with imageName: String, name: String, volume: String) {
-        ingredientImageView.image = UIImage.init(named: imageName)
-        nameLabel.text = name
-        volumeLabel.text = volume
+    func configure(_ ingredient: DetailIngredient?) {
+        guard let ingredient = ingredient else {return}
+        ingredientImageView.image = UIImage.init(named: ingredient.name) ?? UIImage.init(named: "noCocktail")
+        nameLabel.text = ingredient.name
+        volumeLabel.text = ingredient.measure
     }
 
 }

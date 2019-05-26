@@ -24,11 +24,11 @@ class DrinkDetailTitleCell: UITableViewCell, NibLoadable {
         // Configure the view for the selected state
     }
     
-    func configure(withImageURL url: String?, name: String?, category: String?){
-        nameLabel.text = name
-        categoryLabel.text = category
-        guard let url = url else { return }
-        drinkImageView.af_setImage(withURL: URL(string: url)!)
+    func configure(_ drink: DetailDrink?){
+        guard let drink = drink else {return}
+        nameLabel.text = drink.name
+        categoryLabel.text = drink.category
+        drinkImageView.af_setImage(withURL: URL(string: drink.imageURL)!)
     }
     
 }

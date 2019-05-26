@@ -30,7 +30,7 @@ class DrinkDetailViewController: ViewController
     var interactor: DrinkDetailBusinessLogic?
     var router: (NSObjectProtocol & DrinkDetailRoutingLogic & DrinkDetailDataPassing)?
     
-    private var drink: DrinkDetail.FetchDrink.ViewModel.Success.DisplayedDrink?
+    private var drink: DetailDrink?
 
     // MARK: Object lifecycle
     
@@ -94,6 +94,7 @@ extension DrinkDetailViewController: DrinkDetailDisplayLogic{
     func displayDrink(viewModel: DrinkDetail.FetchDrink.ViewModel.Success) {
         displayContent()
         drink = viewModel.displayedDrink
+        title = drink?.name
         tableView.reloadData()
     }
     
@@ -105,13 +106,23 @@ extension DrinkDetailViewController: DrinkDetailDisplayLogic{
 
 extension DrinkDetailViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return drink?.fieldsCount ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: DrinkDetailTitleCell = tableView.dequeue(for: indexPath)
-        cell.configure(withImageURL: drink?.imageURL, name: drink?.name, category: drink?.category)
-        return cell
+        if indexPath.row == 0 {
+            let cell: DrinkDetailTitleCell = tableView.dequeue(for: indexPath)
+            cell.configure(drink)
+            return cell
+        }else if let count = drink?.fieldsCount, indexPath.row == count - 1{
+            let cell: DrinkDetailDescriptionCell = tableView.dequeue(for: indexPath)
+            cell.configure(drink)
+            return cell
+        }else{
+            let cell: DrinkDetailIngredientsCell = tableView.dequeue(for: indexPath)
+            cell.configure(drink?.ingredients[indexPath.row - 1])
+            return cell
+        }
     }
     
     

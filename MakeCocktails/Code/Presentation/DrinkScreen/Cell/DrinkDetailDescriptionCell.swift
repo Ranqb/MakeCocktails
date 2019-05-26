@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DrinkDetailDescriptionCell: UITableViewCell {
+class DrinkDetailDescriptionCell: UITableViewCell, NibLoadable {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
@@ -23,9 +23,10 @@ class DrinkDetailDescriptionCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configure(with title: String, description: String){
-        titleLabel.text = title
-        descriptionLabel.text = description
+    func configure(_ drink: DetailDrink?){
+        guard let drink = drink else {return}
+        titleLabel.text = "Description"
+        descriptionLabel.text = drink.recipe
     }
 
 }

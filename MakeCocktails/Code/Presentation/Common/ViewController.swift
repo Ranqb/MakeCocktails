@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationBar()
         setupSpinnerView()
     }
     
@@ -55,6 +56,11 @@ class ViewController: UIViewController {
     }
     
     // MARK: Private Helpers
+    
+    private func setupNavigationBar() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+    }
     
     private func setupSpinnerView() {
         spinnerView.addSubview(spinner)

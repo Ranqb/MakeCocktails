@@ -76,14 +76,10 @@ class DrinksListViewController: ViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        fetchDrinks()
         self.navigationItem.title = "Search drink"
+        fetchDrinks()
         setupTableView()
 //        setupSearchController()
-        let api = APIService()
-        api.getPopularDrinks { (result) in
-            print(result)
-        }
     }
     
     // MARK: Private Helpers
@@ -119,7 +115,6 @@ class DrinksListViewController: ViewController
         let request = DrinksList.FetchDrinks.Request()
         interactor?.fetchDrinks(request: request)
     }
-    
 
 }
 
