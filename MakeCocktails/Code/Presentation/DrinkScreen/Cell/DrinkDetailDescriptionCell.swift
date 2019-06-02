@@ -23,7 +23,7 @@ class DrinkDetailDescriptionCell: UITableViewCell, NibLoadable {
         // Configure the view for the selected state
     }
     
-    func configure(_ drink: DetailDrink?){
+    func configure(_ drink: DisplayedDrinkDetail?){
         guard let drink = drink else {return}
         titleLabel.text = "Description"
         descriptionLabel.text = drink.recipe

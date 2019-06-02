@@ -75,6 +75,7 @@ class DrinksListViewController: ViewController
     
     private func setupSearchController() {
         if let flaq = interactor?.ingredientIsNotEmpty(), flaq{
+            self.navigationItem.title = ""
             topConstraint.constant = 0
         }
         

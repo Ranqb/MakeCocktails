@@ -14,7 +14,7 @@ import UIKit
 
 typealias DetailIngredient = DrinkDetail.FetchIngredient.ViewModel
 
-typealias DetailDrink = DrinkDetail.FetchDrink.ViewModel.Success.DisplayedDrink
+typealias DisplayedDrinkDetail = DrinkDetail.FetchDrink.ViewModel.Success.DisplayedDrink
 
 enum DrinkDetail
 {
@@ -40,6 +40,7 @@ enum DrinkDetail
                     let imageURL: String
                     let ingredients: [DetailIngredient]
                     let fieldsCount: Int
+                    var isInStorage: Bool = false
                     
                     init?(with drinkModel: Drink) {
                         id = drinkModel.id ?? ""
@@ -122,6 +123,25 @@ enum DrinkDetail
             let ingredient: String
         }
         struct Response {}
+        struct ViewModel {}
+    }
+    enum SaveDrink {
+        struct Request {
+            let drink: DisplayedDrinkDetail
+        }
+        struct Response {
+            let result: VoidResult
+        }
+        struct ViewModel {}
+    }
+    
+    enum RemoveDrink {
+        struct Request {
+            let drinkId: String
+        }
+        struct Response {
+            let result: VoidResult
+        }
         struct ViewModel {}
     }
 }

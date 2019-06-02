@@ -16,7 +16,8 @@ protocol DrinkDetailDisplayLogic: class
 {
     func displayDrink(viewModel: DrinkDetail.FetchDrink.ViewModel.Success)
     func displayError(viewModel: DrinkDetail.FetchDrink.ViewModel.Failure)
-    
+    func displaySaveDrink(viewModel: DrinkDetail.SaveDrink.ViewModel)
+    func displayRemoveDrink(viewModel: DrinkDetail.RemoveDrink.ViewModel)
 }
 
 class DrinkDetailViewController: ViewController
@@ -30,7 +31,9 @@ class DrinkDetailViewController: ViewController
     var interactor: DrinkDetailBusinessLogic?
     var router: (NSObjectProtocol & DrinkDetailRoutingLogic & DrinkDetailDataPassing)?
     
-    private var drink: DetailDrink?
+    private var drink: DisplayedDrinkDetail?
+    private var rightBarButtonItem: UIBarButtonItem?
+    private var isInStorage = false
 
     // MARK: Object lifecycle
     
@@ -72,6 +75,15 @@ class DrinkDetailViewController: ViewController
     }
     
     // MARK: Private Helpers
+    private func setupNavigationButton(drink: DisplayedDrinkDetail) {
+        rightBarButtonItem =
+            UIBarButtonItem.init(
+                image:drink.isInStorage ? UIImage(named: "saved") : UIImage(named: "unsaved"),
+                style: .done, target: self, action: #selector(didPressedStorageButton))
+        self.navigationItem.rightBarButtonItem = rightBarButtonItem
+    }
+    
+
     
     private func setupTableView() {
         tableView.dataSource = self
@@ -88,11 +100,22 @@ class DrinkDetailViewController: ViewController
         interactor?.fetchDrinkDetail(request: request)
     }
     
+    @objc private func didPressedStorageButton() {
+        guard let drink = drink else { return }
+        if isInStorage {
+            let request = DrinkDetail.RemoveDrink.Request(drinkId: drink.id)
+            interactor?.removeDrink(request: request)
+        } else {
+            let request = DrinkDetail.SaveDrink.Request(drink: drink)
+            interactor?.saveDrink(request: request)
+        }
+    }
 }
 
 extension DrinkDetailViewController: DrinkDetailDisplayLogic{
     func displayDrink(viewModel: DrinkDetail.FetchDrink.ViewModel.Success) {
         displayContent()
+        setupNavigationButton(drink: viewModel.displayedDrink)
         drink = viewModel.displayedDrink
         title = drink?.name
         tableView.reloadData()
@@ -101,6 +124,15 @@ extension DrinkDetailViewController: DrinkDetailDisplayLogic{
     func displayError(viewModel: DrinkDetail.FetchDrink.ViewModel.Failure) {
         displayContent()
         display(errorViewModel: viewModel.errorViewModel)
+    }
+    
+    func displaySaveDrink(viewModel: DrinkDetail.SaveDrink.ViewModel) {
+        rightBarButtonItem?.setBackgroundImage(UIImage(named: "saved"), for: .normal, barMetrics: .default)
+        isInStorage = true
+    }
+    func displayRemoveDrink(viewModel: DrinkDetail.RemoveDrink.ViewModel) {
+        rightBarButtonItem?.setBackgroundImage(UIImage(named: "unsaved"), for: .normal, barMetrics: .default)
+        isInStorage = false
     }
 }
 

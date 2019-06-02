@@ -16,6 +16,8 @@ protocol DrinkDetailBusinessLogic
 {
     func fetchDrinkDetail(request: DrinkDetail.FetchDrink.Request)
     func fetchDrinksByIngredient(request: DrinkDetail.SelectIngredient.Request)
+    func saveDrink(request: DrinkDetail.SaveDrink.Request)
+    func removeDrink(request: DrinkDetail.RemoveDrink.Request)
 }
 
 protocol DrinkDetailDataStore
@@ -47,6 +49,13 @@ class DrinkDetailInteractor: DrinkDetailBusinessLogic, DrinkDetailDataStore
 
     func fetchDrinksByIngredient(request: DrinkDetail.SelectIngredient.Request){
         ingredient = request.ingredient
+    }
+    
+    func saveDrink(request: DrinkDetail.SaveDrink.Request){
+        
+    }
+    func removeDrink(request: DrinkDetail.RemoveDrink.Request){
+        
     }
     
 }
