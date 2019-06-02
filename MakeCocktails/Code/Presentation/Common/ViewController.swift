@@ -66,7 +66,7 @@ class ViewController: UIViewController {
         spinnerView.addSubview(spinner)
         view.addSubview(spinnerView)
         spinner.hidesWhenStopped = true
-        spinnerView.backgroundColor = UIColor.white
+        spinnerView.backgroundColor = UIColor.clear
         spinnerView.isHidden = true
         spinnerView.translatesAutoresizingMaskIntoConstraints = false
         let spinnerViewConstraints = [

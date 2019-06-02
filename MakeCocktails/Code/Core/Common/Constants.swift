@@ -11,8 +11,10 @@ import UIKit
 public typealias VoidResult = Result<Void>
 
 let baseURL = "https://www.thecocktaildb.com/api/json/v2/1/"
+let ingredientsList = "list.php?i=list"
 let popular = "popular.php"
 let search = "search.php?s="
+let filter = "filter.php?i="
 let alcoholicDrink = "filter.php?a=Alcoholic"
 let nonAlcoholicDrink = "filter.php?a=Non_Alcoholic"
 let lookup = "lookup.php?i="

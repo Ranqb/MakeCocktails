@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+var getIngredientsList: [String] = [""]
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -19,8 +21,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = navBackgroundColor
         UINavigationBar.appearance().tintColor = navTextColor
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : navTextColor]
-        application.statusBarStyle = statusBarStyle
-
+        
+        APIService().getIngredientsList { (result) in
+            switch result {
+            case .success(let ingredients):
+                getIngredientsList = ingredients ?? []
+            case .failure(let error):
+                print(error)
+            }
+        }
         return true
     }
 

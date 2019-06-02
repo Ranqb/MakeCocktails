@@ -15,23 +15,25 @@ import UIKit
 protocol DrinkDetailBusinessLogic
 {
     func fetchDrinkDetail(request: DrinkDetail.FetchDrink.Request)
+    func fetchDrinksByIngredient(request: DrinkDetail.SelectIngredient.Request)
 }
 
 protocol DrinkDetailDataStore
 {
     var drinkID: String? { get set }
+    var ingredient: String? {get set}
 }
 
 class DrinkDetailInteractor: DrinkDetailBusinessLogic, DrinkDetailDataStore
 {
     // MARK: Properties
-    
     var presenter: DrinkDetailPresentationLogic?
     var apiWorker: DrinkDetailWorker = DrinkDetailWorker(service: APIService())
 
     // MARK: DrinkDetailDataStore
     
     var drinkID: String?
+    var ingredient: String?
     
     // MARK: Do DrinkDetailBusinessLogic
     
@@ -43,5 +45,9 @@ class DrinkDetailInteractor: DrinkDetailBusinessLogic, DrinkDetailDataStore
         }
     }
 
+    func fetchDrinksByIngredient(request: DrinkDetail.SelectIngredient.Request){
+        ingredient = request.ingredient
+    }
+    
 }
 

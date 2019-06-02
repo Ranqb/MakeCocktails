@@ -20,6 +20,8 @@ enum DrinksList
     
     enum FetchDrinks
     {
+        static let `default` = ""
+
         struct Request{
             var searchText: String
         }

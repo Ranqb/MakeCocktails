@@ -9,16 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--DrinksListViewController-->
-        <scene sceneID="FRF-RN-XcI">
-            <objects>
-                <viewControllerPlaceholder storyboardName="DrinksListViewController" id="QbG-Bk-f9w" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="yLB-46-A0T"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Cal-gB-rap" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-334" y="-667"/>
-        </scene>
         <!--DrinkDetailViewController-->
         <scene sceneID="lkU-0x-biP">
             <objects>
@@ -27,7 +17,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SSH-3c-2qd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-325" y="-497"/>
+            <point key="canvasLocation" x="-328" y="-62"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="XnB-7C-nQd">
@@ -40,7 +30,7 @@
                         <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="QbG-Bk-f9w" kind="relationship" relationship="viewControllers" id="cru-JA-nuF"/>
+                        <segue destination="6Vl-x0-ZUJ" kind="relationship" relationship="viewControllers" id="iG7-ba-DAO"/>
                         <segue destination="Wl8-ow-Tva" kind="relationship" relationship="viewControllers" id="RDQ-Rl-ZE6"/>
                     </connections>
                 </tabBarController>
@@ -48,5 +38,47 @@
             </objects>
             <point key="canvasLocation" x="-1079" y="-349"/>
         </scene>
+        <!--DrinksListViewController-->
+        <scene sceneID="R1G-7u-33Y">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DrinksListViewController" id="dUi-wN-9dC" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Pqv-Vz-tpB"/>
+                    <navigationItem key="navigationItem" id="C8t-ta-BRt"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wdT-s0-lGD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="410" y="-574"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5qN-Zy-2Zs">
+            <objects>
+                <navigationController id="6Vl-x0-ZUJ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="martini" selectedImage="martini" id="jny-U1-QQS">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-10"/>
+                        <inset key="largeContentSizeImageInsets" minX="10" minY="10" maxX="10" maxY="0.0"/>
+                    </tabBarItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="DBL-0s-6gA">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="dUi-wN-9dC" kind="relationship" relationship="rootViewController" id="SrV-En-45n"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qga-Ge-9aK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-231" y="-573"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="martini" width="25" height="25"/>
+    </resources>
 </document>

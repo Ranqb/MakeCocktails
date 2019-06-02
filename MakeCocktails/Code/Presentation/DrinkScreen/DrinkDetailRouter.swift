@@ -14,47 +14,46 @@ import UIKit
 
 @objc protocol DrinkDetailRoutingLogic
 {
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+    func routeToDrinks()
 }
 
 protocol DrinkDetailDataPassing
 {
-  var dataStore: DrinkDetailDataStore? { get }
+    var dataStore: DrinkDetailDataStore? { get }
 }
 
 class DrinkDetailRouter: NSObject, DrinkDetailRoutingLogic, DrinkDetailDataPassing
 {
-  weak var viewController: DrinkDetailViewController?
-  var dataStore: DrinkDetailDataStore?
-  
-  // MARK: Routing
-  
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-  //{
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
-
-  // MARK: Navigation
-  
-  //func navigateToSomewhere(source: DrinkDetailViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
-  
-  // MARK: Passing data
-  
-  //func passDataToSomewhere(source: DrinkDetailDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
+    weak var viewController: DrinkDetailViewController?
+    var dataStore: DrinkDetailDataStore?
+    
+    // MARK: Routing
+    
+    func routeToDrinks() {
+        let destination: DrinksListViewController = DrinksListViewController.fromStoryboard()
+        guard let source = viewController,
+            let sourceDataStore = dataStore,
+            var destinationDataStore = destination.router?.dataStore else {
+                assertionFailure("Could not instantiate required variables for routing")
+                return
+        }
+        passDataToDetails(source: sourceDataStore, destination: &destinationDataStore)
+        navigateToDetails(source: source, destination: destination)
+    }
+    
+    //   MARK: Navigation
+    
+    private func navigateToDetails(source: UIViewController?, destination: UIViewController) {
+        source?.navigationController?.pushViewController(destination, animated: true)
+    }
+    
+    //   MARK: Passing data
+    
+    private func passDataToDetails(
+        source: DrinkDetailDataStore,
+        destination: inout DrinksListDataStore
+        ) {
+        destination.ingredient = source.ingredient
+    }
 }
+

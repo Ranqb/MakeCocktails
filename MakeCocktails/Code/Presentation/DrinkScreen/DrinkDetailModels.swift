@@ -116,6 +116,14 @@ enum DrinkDetail
             }
         }
     }
+    
+    enum SelectIngredient {
+        struct Request {
+            let ingredient: String
+        }
+        struct Response {}
+        struct ViewModel {}
+    }
 }
 
 

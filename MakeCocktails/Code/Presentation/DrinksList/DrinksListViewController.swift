@@ -21,13 +21,14 @@ class DrinksListViewController: ViewController
 {
     var interactor: DrinksListBusinessLogic?
     var router: (NSObjectProtocol & DrinksListRoutingLogic & DrinksListDataPassing)?
-    private let searchController = UISearchController(searchResultsController: nil)
     private var searchDelayTimer: Timer?
     private var drinks: [DisplayedDrink] = []
+    
     // MARK: IBOutlets
     
     @IBOutlet var collectionView: UICollectionView!
-    @IBOutlet var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet var topConstraint: NSLayoutConstraint!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     // MARK: Object lifecycle
     
@@ -59,25 +60,13 @@ class DrinksListViewController: ViewController
         router.dataStore = interactor
     }
     
-    // MARK: Routing
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if let scene = segue.identifier {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            if let router = router, router.responds(to: selector) {
-                router.perform(selector, with: segue)
-            }
-        }
-    }
-    
     // MARK: View lifecycle
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         self.navigationItem.title = "Search drink"
-        fetchDrinks(with: "")
+        fetchDrinks(with: DrinksList.FetchDrinks.default)
         setupTableView()
         setupSearchController()
     }
@@ -85,16 +74,19 @@ class DrinksListViewController: ViewController
     // MARK: Private Helpers
     
     private func setupSearchController() {
-        searchController.searchBar.sizeToFit()
-        searchController.searchBar.tintColor = navTextColor
-        searchController.searchBar.backgroundColor = navBackgroundColor
-        searchController.searchBar.backgroundImage = UIImage()
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
-        searchController.searchBar.delegate = self
-        searchController.dimsBackgroundDuringPresentation = false
-        searchController.hidesNavigationBarDuringPresentation = false
-        definesPresentationContext = true
+        if let flaq = interactor?.ingredientIsNotEmpty(), flaq{
+            topConstraint.constant = 0
+        }
+        
+        searchBar.sizeToFit()
+        searchBar.tintColor = navTextColor
+        searchBar.backgroundColor = navBackgroundColor
+        searchBar.backgroundImage = UIImage()
+        searchBar.delegate = self
+        guard let firstSubview = searchBar.subviews.first else { return }
+        firstSubview.subviews.forEach {
+            ($0 as? UITextField)?.clearButtonMode = .never
+        }
     }
     
     private func setupTableView() {
@@ -157,8 +149,8 @@ extension DrinksListViewController: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         cell.alpha = 0
-        cell.layer.transform = CATransform3DMakeScale(0.5, 0.5, 0.5)
-        UIView.animate(withDuration: 0.4, animations: { () -> Void in
+        cell.layer.transform = CATransform3DMakeScale(0.8, 0.8, 0.8)
+        UIView.animate(withDuration: 0.2, animations: { () -> Void in
             cell.alpha = 1
             cell.layer.transform = CATransform3DScale(CATransform3DIdentity, 1, 1, 1)
         })
@@ -194,12 +186,32 @@ extension DrinksListViewController: UICollectionViewDelegate, UICollectionViewDa
 // MARK: UISearchBar
 
 extension DrinksListViewController: UISearchBarDelegate {
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        if !(searchBar.text?.isEmpty)!{
+            searchBar.setShowsCancelButton(true, animated: true)
+        }
+        return true
+    }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if !searchText.isEmpty{
+            searchBar.setShowsCancelButton(true, animated: true)
+            UIView.animate(withDuration: 0.5, animations: {
+                self.searchBar.layoutIfNeeded()
+            })
+        }
         searchDelayTimer?.invalidate()
         searchDelayTimer = Timer.scheduledTimer(timeInterval: delay, target: self, selector: #selector(searchDrinks(sender:)), userInfo: searchText, repeats: false)
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        fetchDrinks(with: "")
+        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.text = DrinksList.FetchDrinks.default
+        fetchDrinks(with: DrinksList.FetchDrinks.default)
+        searchBar.resignFirstResponder()
     }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.resignFirstResponder()
+    }
+    
 }

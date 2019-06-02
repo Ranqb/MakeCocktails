@@ -16,26 +16,46 @@ protocol DrinksListBusinessLogic
 {
     func fetchDrinks(request: DrinksList.FetchDrinks.Request)
     func selectDrink(request: DrinksList.SelectDrink.Request)
-    
+    func ingredientIsNotEmpty() -> Bool
 }
 
 protocol DrinksListDataStore
 {
     var drinkID: String? {get set}
+    var ingredient: String? {get set}
 }
 
 class DrinksListInteractor: DrinksListBusinessLogic, DrinksListDataStore
 {
     var drinkID: String?
+    var ingredient: String?
     
     var presenter: DrinksListPresentationLogic?
     private var apiWorker: DrinksListWorker = DrinksListWorker(service: APIService())
     
     func fetchDrinks(request: DrinksList.FetchDrinks.Request) {
-        if request.searchText.count > 0 {
-            apiWorker.getDrinks(by: request.searchText) { (result) in
-                let response = DrinksList.FetchDrinks.Response(result: result)
-                self.presenter?.presentDrinks(response: response)
+        var searchText = request.searchText
+        if searchText.isEmpty{
+            if let ingredient = ingredient{
+                searchText = ingredient
+            }
+        }
+        if !searchText.isEmpty {
+            if searchText.contains(","){
+                apiWorker.getDrinksByIngredients(searchText) { (result) in
+                    let response = DrinksList.FetchDrinks.Response(result: result)
+                    self.presenter?.presentDrinks(response: response)
+                }
+            }else if getIngredientsList.contains(searchText) {
+                apiWorker.getDrinksByIngredients(searchText) { (result) in
+                    let response = DrinksList.FetchDrinks.Response(result: result)
+                    self.presenter?.presentDrinks(response: response)
+                }
+            }else{
+                apiWorker.getDrinksByName(searchText) { (result) in
+                    let response = DrinksList.FetchDrinks.Response(result: result)
+                    self.presenter?.presentDrinks(response: response)
+                }
             }
         }else{
             apiWorker.getPopularDrinks { (result) in
@@ -47,6 +67,13 @@ class DrinksListInteractor: DrinksListBusinessLogic, DrinksListDataStore
     
     func selectDrink(request: DrinksList.SelectDrink.Request) {
         drinkID = request.drinkID
+    }
+    
+    func ingredientIsNotEmpty() -> Bool {
+        if let ingredient = ingredient{
+            return !ingredient.isEmpty
+        }
+        return false
     }
 }
 
