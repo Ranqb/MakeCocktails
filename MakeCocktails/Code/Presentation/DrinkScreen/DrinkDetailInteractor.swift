@@ -53,10 +53,22 @@ class DrinkDetailInteractor: DrinkDetailBusinessLogic, DrinkDetailDataStore
     }
     
     func saveDrink(request: DrinkDetail.SaveDrink.Request){
-        dataBaseWorker.addAlbum(newAlbum: request.album) { (result) in
-            let response = AlbumDetail.AddAlbum.Response(result: result)
-            self.presenter?.presentAddedAlbum(response: response)
+        apiWorker.getDrinkDetail(by: request.drinkId) { (result) in
+            let response = DrinkDetail.FetchDrink.Response(result: result)
+            switch response.result {
+            case .success(let drink):
+                guard let drink = drink else { return }
+                dataBaseWorker.addDrink(newDrink: drink) { (result) in
+                    let response = DrinkDetail.SaveDrink.Response(result: result)
+                    self.presenter?.presentSaveDrink(response: response)
+                }
+            case .failure(let error):
+                self.presenter?.handleError(error)
+            }
+            
         }
+
+
     }
     func removeDrink(request: DrinkDetail.RemoveDrink.Request){
         dataBaseWorker.removeAlbum(withID: request.albumID) { (result) in

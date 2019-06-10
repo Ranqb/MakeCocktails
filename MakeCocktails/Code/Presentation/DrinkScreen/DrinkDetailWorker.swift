@@ -33,7 +33,7 @@ class DrinkDetailWorker
             }
         }
     }
-    func addDrink(newDrink: AlbumDetailsModel, completion: @escaping (VoidResult) -> Void) {
+    func saveDrink(newDrink: DrinkModel, completion: @escaping (VoidResult) -> Void) {
         service.addAlbum(newAlbum: newAlbum) { (result) in
             DispatchQueue.main.async {
                 completion(result)
@@ -41,7 +41,7 @@ class DrinkDetailWorker
         }
     }
     
-    func removeAlbum(withID mbid: String, completion: @escaping (VoidResult) -> Void) {
+    func removeDrink(by id: String, completion: @escaping (VoidResult) -> Void) {
         service.removeAlbum(withID: mbid) { (result) in
             DispatchQueue.main.async {
                 completion(result)

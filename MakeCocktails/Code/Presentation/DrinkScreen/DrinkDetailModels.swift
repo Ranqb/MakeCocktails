@@ -127,7 +127,7 @@ enum DrinkDetail
     }
     enum SaveDrink {
         struct Request {
-            let drink: DisplayedDrinkDetail
+            let drinkId: String
         }
         struct Response {
             let result: VoidResult

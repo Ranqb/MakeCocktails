@@ -106,7 +106,7 @@ class DrinkDetailViewController: ViewController
             let request = DrinkDetail.RemoveDrink.Request(drinkId: drink.id)
             interactor?.removeDrink(request: request)
         } else {
-            let request = DrinkDetail.SaveDrink.Request(drink: drink)
+            let request = DrinkDetail.SaveDrink.Request(drinkId: drink.id)
             interactor?.saveDrink(request: request)
         }
     }

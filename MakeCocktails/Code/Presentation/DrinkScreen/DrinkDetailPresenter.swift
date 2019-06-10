@@ -35,6 +35,26 @@ class DrinkDetailPresenter: DrinkDetailPresentationLogic
         }
     }
     
+    func presentSaveDrink(response: DrinkDetail.SaveDrink.Response) {
+        switch response.result {
+        case .success(_):
+            let viewModel = DrinkDetail.SaveDrink.ViewModel()
+            viewController?.displaySaveDrink(viewModel: viewModel)
+        case .failure(let error):
+            handleError(error)
+        }
+    }
+    
+    func presentRemoveDrink(response: DrinkDetail.RemoveDrink.Response) {
+        switch response.result {
+        case .success(_):
+            let viewModel = DrinkDetail.RemoveDrink.ViewModel()
+            viewController?.displayRemoveDrink(viewModel: viewModel)
+        case .failure(let error):
+            handleError(error)
+        }
+    }
+    
     // MARK: Private Helpers
     
     private func handleSuccessGetDrink(_ drink: DrinkModel?) {
@@ -44,7 +64,7 @@ class DrinkDetailPresenter: DrinkDetailPresentationLogic
         viewController?.displayDrink(viewModel: viewModel)
     }
     
-    private func handleError(_ error: Error) {
+    func handleError(_ error: Error) {
         let errorViewModel = ErrorViewModel(error: error)
         let viewModel = DrinkDetail.FetchDrink.ViewModel.Failure(errorViewModel: errorViewModel)
         viewController?.displayError(viewModel: viewModel)
