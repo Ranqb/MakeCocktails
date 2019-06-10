@@ -26,7 +26,7 @@ class DrinksListWorker
     
     // MARK: MainScreenBusinessLogic
     
-    func getPopularDrinks(completion: @escaping (Result<[Drink]?>) -> Void) {
+    func getPopularDrinks(completion: @escaping (Result<[DrinkModel]?>) -> Void) {
         service.getPopularDrinks { (result) in
             DispatchQueue.main.async {
                 completion(result)
@@ -34,7 +34,7 @@ class DrinksListWorker
         }
     }
     
-    func getDrinksByName(_ text: String, completion: @escaping (Result<[Drink]?>) -> Void) {
+    func getDrinksByName(_ text: String, completion: @escaping (Result<[DrinkModel]?>) -> Void) {
         service.getDrinksByName(text) { (result) in
             DispatchQueue.main.async {
                 completion(result)
@@ -42,7 +42,7 @@ class DrinksListWorker
         }
     }
     
-    func getDrinksByIngredients(_ text: String, completion: @escaping (Result<[Drink]?>) -> Void) {
+    func getDrinksByIngredients(_ text: String, completion: @escaping (Result<[DrinkModel]?>) -> Void) {
         service.getDrinksByIngredients(text) { (result) in
             DispatchQueue.main.async {
                 completion(result)

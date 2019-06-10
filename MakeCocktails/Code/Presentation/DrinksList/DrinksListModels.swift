@@ -27,7 +27,7 @@ enum DrinksList
         }
         
         struct Response{
-            let result: Result<[Drink]?>
+            let result: Result<[DrinkModel]?>
         }
         
         struct ViewModel{
@@ -37,7 +37,7 @@ enum DrinksList
                     let drinkID: String
                     let imageURL: String
                     let category: String
-                    init(with drinkModel: Drink) {
+                    init(with drinkModel: DrinkModel) {
                         drinkName = drinkModel.name ?? ""
                         drinkID = drinkModel.id ?? ""
                         imageURL = drinkModel.imageURL ?? ""

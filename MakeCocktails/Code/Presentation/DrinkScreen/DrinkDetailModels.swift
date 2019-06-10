@@ -25,7 +25,7 @@ enum DrinkDetail
         struct Request{}
         
         struct Response{
-            let result: Result<Drink?>
+            let result: Result<DrinkModel?>
         }
         
         struct ViewModel{
@@ -42,7 +42,7 @@ enum DrinkDetail
                     let fieldsCount: Int
                     var isInStorage: Bool = false
                     
-                    init?(with drinkModel: Drink) {
+                    init?(with drinkModel: DrinkModel) {
                         id = drinkModel.id ?? ""
                         name = drinkModel.name ?? ""
                         category = drinkModel.category ?? ""

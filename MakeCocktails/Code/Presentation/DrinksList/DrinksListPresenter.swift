@@ -35,7 +35,7 @@ class DrinksListPresenter: DrinksListPresentationLogic
     
     // MARK: Private Helpers
     
-    private func handleSuccessFetchedDrinks(_ drinks: [Drink]?) {
+    private func handleSuccessFetchedDrinks(_ drinks: [DrinkModel]?) {
         guard let drinks = drinks else { return }
         var displayedDrinks: [DisplayedDrink] = []
         for drink in drinks {

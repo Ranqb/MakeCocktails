@@ -36,7 +36,7 @@ class APIService: ServicesProtocol {
         }
     }
     
-    func getPopularDrinks(completion: @escaping (Result<[Drink]?>) -> Void) {
+    func getPopularDrinks(completion: @escaping (Result<[DrinkModel]?>) -> Void) {
         guard let url = URL(string: baseURL+popular) else {return}
         
         Alamofire.request(url).responseData { (response) in
@@ -56,7 +56,7 @@ class APIService: ServicesProtocol {
         }
     }
     
-    func getDrinksByName(_ text: String, completion: @escaping (Result<[Drink]?>) -> Void) {
+    func getDrinksByName(_ text: String, completion: @escaping (Result<[DrinkModel]?>) -> Void) {
         let searchName = text.replacingOccurrences(of: " ", with: "_")
         guard let url = URL(string: baseURL+search+searchName) else {return}
         
@@ -78,7 +78,7 @@ class APIService: ServicesProtocol {
         }
     }
     
-    func getDrinksByIngredients(_ text: String, completion: @escaping (Result<[Drink]?>) -> Void) {
+    func getDrinksByIngredients(_ text: String, completion: @escaping (Result<[DrinkModel]?>) -> Void) {
         var ingredients = text.replacingOccurrences(of: " ,", with: ",")
         ingredients = ingredients.replacingOccurrences(of: ", ", with: ",")
         ingredients = ingredients.replacingOccurrences(of: " ", with: "_")
@@ -103,7 +103,7 @@ class APIService: ServicesProtocol {
         }
     }
     
-    func getDrink(by id: String, completion: @escaping (Result<Drink?>) -> Void) {
+    func getDrink(by id: String, completion: @escaping (Result<DrinkModel?>) -> Void) {
         guard let url = URL(string: baseURL+lookup+id) else {return}
         
         Alamofire.request(url).responseData { (response) in

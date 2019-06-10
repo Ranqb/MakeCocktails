@@ -26,8 +26,23 @@ class DrinkDetailWorker
     
     // MARK: AlbumDetailBusinessLogic
     
-    func getDrinkDetail(by id: String, completion: @escaping (Result<Drink?>) -> Void) {
+    func getDrinkDetail(by id: String, completion: @escaping (Result<DrinkModel?>) -> Void) {
         service.getDrink(by: id) { (result) in
+            DispatchQueue.main.async {
+                completion(result)
+            }
+        }
+    }
+    func addDrink(newDrink: AlbumDetailsModel, completion: @escaping (VoidResult) -> Void) {
+        service.addAlbum(newAlbum: newAlbum) { (result) in
+            DispatchQueue.main.async {
+                completion(result)
+            }
+        }
+    }
+    
+    func removeAlbum(withID mbid: String, completion: @escaping (VoidResult) -> Void) {
+        service.removeAlbum(withID: mbid) { (result) in
             DispatchQueue.main.async {
                 completion(result)
             }

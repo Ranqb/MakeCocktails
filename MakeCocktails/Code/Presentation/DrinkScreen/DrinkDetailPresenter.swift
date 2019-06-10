@@ -37,7 +37,7 @@ class DrinkDetailPresenter: DrinkDetailPresentationLogic
     
     // MARK: Private Helpers
     
-    private func handleSuccessGetDrink(_ drink: Drink?) {
+    private func handleSuccessGetDrink(_ drink: DrinkModel?) {
         guard let drink = drink else { return }
         guard let displayedDrink = DrinkDetail.FetchDrink.ViewModel.Success.DisplayedDrink(with: drink) else { return }
         let viewModel = DrinkDetail.FetchDrink.ViewModel.Success(displayedDrink: displayedDrink)

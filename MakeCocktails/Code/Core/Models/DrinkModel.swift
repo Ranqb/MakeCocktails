@@ -1,5 +1,5 @@
 //
-//  Drink.swift
+//  DrinkModel.swift
 //  MakeCocktails
 //
 //  Created by Andrey Nedov on 22/03/2019.
@@ -29,14 +29,14 @@ import UIKit
 
 // Structs to get individual drinks
 struct ResultDrinks: Codable {
-    var drinks: [Drink]
+    var drinks: [DrinkModel]
     
     enum CodingKeys: String, CodingKey {
         case drinks = "drinks"
     }
 }
 
-struct Drink: Codable {
+struct DrinkModel: Codable {
     
     var id: String?
     var name: String?

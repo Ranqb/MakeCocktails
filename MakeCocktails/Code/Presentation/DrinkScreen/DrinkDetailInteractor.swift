@@ -30,7 +30,8 @@ class DrinkDetailInteractor: DrinkDetailBusinessLogic, DrinkDetailDataStore
 {
     // MARK: Properties
     var presenter: DrinkDetailPresentationLogic?
-    var apiWorker: DrinkDetailWorker = DrinkDetailWorker(service: APIService())
+    private var apiWorker: DrinkDetailWorker = DrinkDetailWorker(service: APIService())
+    private var dataBaseWorker: DrinkDetailWorker = DrinkDetailWorker(service: DataBaseService())
 
     // MARK: DrinkDetailDataStore
     
@@ -52,11 +53,16 @@ class DrinkDetailInteractor: DrinkDetailBusinessLogic, DrinkDetailDataStore
     }
     
     func saveDrink(request: DrinkDetail.SaveDrink.Request){
-        
+        dataBaseWorker.addAlbum(newAlbum: request.album) { (result) in
+            let response = AlbumDetail.AddAlbum.Response(result: result)
+            self.presenter?.presentAddedAlbum(response: response)
+        }
     }
     func removeDrink(request: DrinkDetail.RemoveDrink.Request){
-        
+        dataBaseWorker.removeAlbum(withID: request.albumID) { (result) in
+            let response = AlbumDetail.RemoveAlbum.Response(result: result)
+            self.presenter?.presentRemovedAlbum(response: response)
+        }
     }
-    
 }
 
