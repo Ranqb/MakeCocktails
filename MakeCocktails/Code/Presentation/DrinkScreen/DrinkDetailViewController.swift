@@ -74,11 +74,6 @@ class DrinkDetailViewController: ViewController
         getDrink()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        getDrink()
-    }
-    
     // MARK: Private Helpers
     private func setupNavigationButton() {
         rightBarButtonItem =

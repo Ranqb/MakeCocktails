@@ -32,21 +32,32 @@ class DrinksListInteractor: DrinksListBusinessLogic, DrinksListDataStore
     
     var presenter: DrinksListPresentationLogic?
     private var apiWorker: DrinksListWorker = DrinksListWorker(service: APIService())
-    
+    private var getIngredientsList: [String] = []
+
     func fetchDrinks(request: DrinksList.FetchDrinks.Request) {
         var searchText = request.searchText
-        if searchText.isEmpty{
-            if let ingredient = ingredient{
-                searchText = ingredient
+        if let ingredient = ingredient{
+            searchText = ingredient
+        }else{
+            if getIngredientsList.isEmpty {
+                apiWorker.getIngredientsList { (result) in
+                    switch result {
+                    case .success(let ingredients):
+                        self.getIngredientsList = ingredients ?? []
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
             }
         }
+
         if !searchText.isEmpty {
             if searchText.contains(","){
                 apiWorker.getDrinksByIngredients(searchText) { (result) in
                     let response = DrinksList.FetchDrinks.Response(result: result)
                     self.presenter?.presentDrinks(response: response)
                 }
-            }else if getIngredientsList.contains(searchText) {
+            }else if ((getIngredientsList.contains(searchText)) || !(ingredient?.isEmpty ?? true)) {
                 apiWorker.getDrinksByIngredients(searchText) { (result) in
                     let response = DrinksList.FetchDrinks.Response(result: result)
                     self.presenter?.presentDrinks(response: response)

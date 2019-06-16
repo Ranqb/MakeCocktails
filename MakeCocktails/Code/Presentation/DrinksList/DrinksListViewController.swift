@@ -182,6 +182,7 @@ extension DrinksListViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets.init(top: topAndBottomIndent, left: leftIndent, bottom: topAndBottomIndent, right: rightIndent)
     }
+    
 }
 
 // MARK: UISearchBar
