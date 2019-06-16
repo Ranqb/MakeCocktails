@@ -99,8 +99,6 @@ class DrinkDetailViewController: ViewController
         tableView.register(DrinkDetailIngredientsCell.self)
         tableView.register(DrinkDetailDescriptionCell.self)
         tableView.tableFooterView = UIView()
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = UITableView.automaticDimension
     }
     
     private func getDrink() {

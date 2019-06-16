@@ -20,9 +20,6 @@
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zPb-xr-22z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="229.5"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="229.5" id="QMi-Td-1Vj"/>
-                        </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4NV-W7-1st">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="229.5"/>
@@ -58,15 +55,14 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="zPb-xr-22z" firstAttribute="top" secondItem="0ch-B1-DhW" secondAttribute="top" id="8eh-9I-qbt"/>
-                    <constraint firstItem="zPb-xr-22z" firstAttribute="leading" secondItem="0ch-B1-DhW" secondAttribute="leading" id="GWW-bE-4pt"/>
-                    <constraint firstAttribute="trailing" secondItem="zPb-xr-22z" secondAttribute="trailing" id="JhA-es-YTw"/>
+                    <constraint firstAttribute="bottom" secondItem="zPb-xr-22z" secondAttribute="bottom" id="GQt-RJ-Vxz"/>
                     <constraint firstAttribute="bottom" secondItem="4NV-W7-1st" secondAttribute="bottom" id="M2T-rw-ICY"/>
+                    <constraint firstItem="zPb-xr-22z" firstAttribute="leading" secondItem="0ch-B1-DhW" secondAttribute="leading" id="gzK-oe-NvG"/>
                     <constraint firstItem="4NV-W7-1st" firstAttribute="leading" secondItem="0ch-B1-DhW" secondAttribute="leading" id="hUz-bT-vX4"/>
-                    <constraint firstAttribute="bottom" secondItem="zPb-xr-22z" secondAttribute="bottom" id="iiY-23-w72"/>
-                    <constraint firstItem="4NV-W7-1st" firstAttribute="height" secondItem="zPb-xr-22z" secondAttribute="height" id="l95-uw-XNL"/>
                     <constraint firstItem="4NV-W7-1st" firstAttribute="top" secondItem="0ch-B1-DhW" secondAttribute="top" id="m6e-OB-e6I"/>
+                    <constraint firstAttribute="trailing" secondItem="zPb-xr-22z" secondAttribute="trailing" id="mt6-j0-fRc"/>
                     <constraint firstAttribute="trailing" secondItem="4NV-W7-1st" secondAttribute="trailing" id="xgc-5F-baf"/>
+                    <constraint firstItem="zPb-xr-22z" firstAttribute="top" secondItem="0ch-B1-DhW" secondAttribute="top" id="zs0-dy-u5P"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

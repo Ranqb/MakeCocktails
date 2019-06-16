@@ -22,14 +22,11 @@
                         <rect key="frame" x="16" y="11" width="50" height="50"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="3S9-sX-eTx"/>
-                            <constraint firstAttribute="height" constant="50" id="n2d-0D-61s"/>
+                            <constraint firstAttribute="height" constant="50" id="Wx3-Fk-ZIb"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nzl-DQ-Rpr">
                         <rect key="frame" x="74" y="11" width="273" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="LFA-Si-7jg"/>
-                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.055379219350000002" green="0.13325604799999999" blue="0.2372736037" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -52,19 +49,17 @@
                     </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="kRx-DS-dF6" firstAttribute="centerY" secondItem="KmI-e5-Vqx" secondAttribute="centerY" id="2iC-oM-hRS"/>
                     <constraint firstItem="g3t-fB-itR" firstAttribute="top" secondItem="Nzl-DQ-Rpr" secondAttribute="bottom" constant="8" id="AAH-Au-zkS"/>
-                    <constraint firstItem="dAh-c3-are" firstAttribute="top" secondItem="KmI-e5-Vqx" secondAttribute="top" constant="11" id="Csm-Gg-veM"/>
+                    <constraint firstItem="g3t-fB-itR" firstAttribute="leading" secondItem="kRx-DS-dF6" secondAttribute="trailing" constant="8" id="CRn-Va-Vr5"/>
                     <constraint firstItem="g3t-fB-itR" firstAttribute="bottom" secondItem="KmI-e5-Vqx" secondAttribute="bottomMargin" id="L2m-ly-i9K"/>
                     <constraint firstAttribute="bottom" secondItem="dAh-c3-are" secondAttribute="bottom" constant="10.5" id="Pjg-GZ-3OP"/>
                     <constraint firstItem="Nzl-DQ-Rpr" firstAttribute="top" secondItem="KmI-e5-Vqx" secondAttribute="topMargin" id="Ssg-Wb-ZV0"/>
-                    <constraint firstItem="dAh-c3-are" firstAttribute="leading" secondItem="g3t-fB-itR" secondAttribute="trailing" constant="8" id="UDF-US-BTR"/>
                     <constraint firstItem="kRx-DS-dF6" firstAttribute="leading" secondItem="KmI-e5-Vqx" secondAttribute="leadingMargin" id="YTd-5I-wAB"/>
                     <constraint firstItem="dAh-c3-are" firstAttribute="leading" secondItem="Nzl-DQ-Rpr" secondAttribute="trailing" constant="8" id="cTx-aj-jOb"/>
-                    <constraint firstItem="kRx-DS-dF6" firstAttribute="bottom" secondItem="KmI-e5-Vqx" secondAttribute="bottomMargin" id="hi6-dJ-bX5"/>
                     <constraint firstAttribute="trailing" secondItem="dAh-c3-are" secondAttribute="trailing" constant="5" id="j6K-JB-VLp"/>
-                    <constraint firstItem="g3t-fB-itR" firstAttribute="leading" secondItem="kRx-DS-dF6" secondAttribute="trailing" constant="8" id="pgN-4X-IES"/>
+                    <constraint firstItem="g3t-fB-itR" firstAttribute="width" secondItem="Nzl-DQ-Rpr" secondAttribute="width" id="pZr-Hf-Apy"/>
                     <constraint firstItem="Nzl-DQ-Rpr" firstAttribute="leading" secondItem="kRx-DS-dF6" secondAttribute="trailing" constant="8" id="wLn-wH-eNM"/>
-                    <constraint firstItem="kRx-DS-dF6" firstAttribute="top" secondItem="KmI-e5-Vqx" secondAttribute="topMargin" id="wkW-0I-g8G"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
