@@ -16,6 +16,7 @@ protocol FavoriteDrinkListBusinessLogic
 {
     func fetchDrinks(request: FavoriteDrinkList.FetchDrinks.Request)
     func selectDrink(request: FavoriteDrinkList.SelectDrink.Request)
+    func removeDrink(request: FavoriteDrinkList.RemoveDrink.Request)
 }
 
 protocol FavoriteDrinkListDataStore
@@ -39,5 +40,11 @@ class FavoriteDrinkListInteractor: FavoriteDrinkListBusinessLogic, FavoriteDrink
     
     func selectDrink(request: FavoriteDrinkList.SelectDrink.Request) {
         drinkID = request.drinkID
+    }
+    func removeDrink(request: FavoriteDrinkList.RemoveDrink.Request){
+        dataBaseWorker.removeDrink(by: request.drinkId) { (result) in
+            let response = FavoriteDrinkList.RemoveDrink.Response(result: result)
+            self.presenter?.presentRemoveDrink(response: response)
+        }
     }
 }

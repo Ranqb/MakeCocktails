@@ -33,7 +33,6 @@ class DrinkDetailViewController: ViewController
     
     private var drink: DisplayedDrinkDetail?
     private var rightBarButtonItem: UIBarButtonItem?
-    private var isInStorage = false
 
     // MARK: Object lifecycle
     
@@ -75,6 +74,11 @@ class DrinkDetailViewController: ViewController
         getDrink()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getDrink()
+    }
+    
     // MARK: Private Helpers
     private func setupNavigationButton() {
         rightBarButtonItem =
@@ -95,6 +99,8 @@ class DrinkDetailViewController: ViewController
         tableView.register(DrinkDetailIngredientsCell.self)
         tableView.register(DrinkDetailDescriptionCell.self)
         tableView.tableFooterView = UIView()
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = UITableView.automaticDimension
     }
     
     private func getDrink() {
@@ -105,7 +111,7 @@ class DrinkDetailViewController: ViewController
     
     @objc private func didPressedStorageButton() {
         guard let drink = drink else { return }
-        if isInStorage {
+        if drink.isInStorage {
             let request = DrinkDetail.RemoveDrink.Request(drinkId: drink.id)
             interactor?.removeDrink(request: request)
         } else {
@@ -131,11 +137,9 @@ extension DrinkDetailViewController: DrinkDetailDisplayLogic{
     
     func displaySaveDrink(viewModel: DrinkDetail.SaveDrink.ViewModel) {
         rightBarButtonItem?.setBackgroundImage(UIImage(named: "saved"), for: .normal, barMetrics: .default)
-        isInStorage = true
     }
     func displayRemoveDrink(viewModel: DrinkDetail.RemoveDrink.ViewModel) {
         rightBarButtonItem?.setBackgroundImage(UIImage(named: "unsaved"), for: .normal, barMetrics: .default)
-        isInStorage = false
     }
 }
 

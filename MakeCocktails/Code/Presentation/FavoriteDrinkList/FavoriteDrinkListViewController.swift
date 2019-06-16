@@ -15,6 +15,7 @@ import UIKit
 protocol FavoriteDrinkListDisplayLogic: class
 {
     func displayDrinks(viewModel: FavoriteDrinkList.FetchDrinks.ViewModel.Success)
+    func displayRemoveDrink(viewModel: FavoriteDrinkList.RemoveDrink.ViewModel)
     func displayError(viewModel: FavoriteDrinkList.FetchDrinks.ViewModel.Failure)
 }
 
@@ -22,8 +23,8 @@ class FavoriteDrinkListViewController: ViewController
 {
     var interactor: FavoriteDrinkListBusinessLogic?
     var router: (NSObjectProtocol & FavoriteDrinkListRoutingLogic & FavoriteDrinkListDataPassing)?
-    private var searchDelayTimer: Timer?
     private var drinks: [FavoriteDisplayedDrink] = []
+    private var selectedIndexPath: IndexPath?
     
     // MARK: IBOutlets
     
@@ -65,13 +66,13 @@ class FavoriteDrinkListViewController: ViewController
     {
         super.viewDidLoad()
         self.navigationItem.title = "Favorite"
-        fetchDrinks(with: FavoriteDrinkList.FetchDrinks.default)
+        fetchDrinks()
         setupTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchDrinks(with: FavoriteDrinkList.FetchDrinks.default)
+        fetchDrinks()
     }
     
     // MARK: Private Helpers
@@ -87,18 +88,20 @@ class FavoriteDrinkListViewController: ViewController
     
     //@IBOutlet weak var nameTextField: UITextField!
     
-    func fetchDrinks(with text: String?)
+    func fetchDrinks()
     {
-        guard let text = text else {return}
         displayLoading()
-        let request = FavoriteDrinkList.FetchDrinks.Request(searchText: text)
+        let request = FavoriteDrinkList.FetchDrinks.Request()
         interactor?.fetchDrinks(request: request)
     }
     
-    @objc fileprivate func searchDrinks(sender: Timer) {
-        fetchDrinks(with: sender.userInfo as? String)
+    func displayRemoveDrink(viewModel: FavoriteDrinkList.RemoveDrink.ViewModel) {
+        guard let indexPath = selectedIndexPath else {return}
+        tableView.beginUpdates()
+        drinks.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        tableView.endUpdates()
     }
-    
 }
 
 // MARK: FavoriteDrinkListDisplayLogic
@@ -136,5 +139,16 @@ extension FavoriteDrinkListViewController: UITableViewDelegate, UITableViewDataS
         interactor?.selectDrink(request: request)
         router?.routeToDetails()
     }
-
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            let request = FavoriteDrinkList.RemoveDrink.Request(drinkId: drinks[indexPath.row].id)
+            selectedIndexPath = indexPath
+            interactor?.removeDrink(request: request)
+        }
+    }
 }

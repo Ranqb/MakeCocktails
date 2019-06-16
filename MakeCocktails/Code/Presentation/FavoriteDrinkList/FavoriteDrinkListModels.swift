@@ -20,11 +20,7 @@ enum FavoriteDrinkList
     
     enum FetchDrinks
     {
-        static let `default` = ""
-        
-        struct Request{
-            var searchText: String
-        }
+        struct Request{}
         
         struct Response{
             let result: Result<[DrinkModel]?>
@@ -111,6 +107,15 @@ enum FavoriteDrinkList
             let drinkID: String
         }
         struct Response {}
+        struct ViewModel {}
+    }
+    enum RemoveDrink {
+        struct Request {
+            let drinkId: String
+        }
+        struct Response {
+            let result: VoidResult
+        }
         struct ViewModel {}
     }
 }

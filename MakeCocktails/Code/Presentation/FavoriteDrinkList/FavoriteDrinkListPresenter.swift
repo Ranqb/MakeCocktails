@@ -15,6 +15,7 @@ import UIKit
 protocol FavoriteDrinkListPresentationLogic
 {
     func presentDrinks(response: FavoriteDrinkList.FetchDrinks.Response)
+    func presentRemoveDrink(response: FavoriteDrinkList.RemoveDrink.Response)
 }
 
 class FavoriteDrinkListPresenter: FavoriteDrinkListPresentationLogic
@@ -44,6 +45,16 @@ class FavoriteDrinkListPresenter: FavoriteDrinkListPresentationLogic
         }
         let viewModel = FavoriteDrinkList.FetchDrinks.ViewModel.Success(displayedDrinks: displayedDrinks)
         viewController?.displayDrinks(viewModel: viewModel)
+    }
+    
+    func presentRemoveDrink(response: FavoriteDrinkList.RemoveDrink.Response) {
+        switch response.result {
+        case .success(_):
+            let viewModel = FavoriteDrinkList.RemoveDrink.ViewModel()
+            viewController?.displayRemoveDrink(viewModel: viewModel)
+        case .failure(let error):
+            handleError(error)
+        }
     }
     
     private func handleError(_ error: Error) {

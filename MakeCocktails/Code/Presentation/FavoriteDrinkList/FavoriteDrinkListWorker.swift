@@ -33,4 +33,12 @@ class FavoriteDrinkListWorker
             }
         }
     }
+    
+    func removeDrink(by id: String, completion: @escaping (VoidResult) -> Void) {
+        service.removeDrink(by: id) { (result) in
+            DispatchQueue.main.async {
+                completion(result)
+            }
+        }
+    }
 }
