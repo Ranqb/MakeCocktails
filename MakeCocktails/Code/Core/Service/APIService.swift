@@ -10,6 +10,15 @@ import Foundation
 import Alamofire
 
 class APIService: ServicesProtocol {
+    func fetchDrinks(completion: @escaping (Result<[DrinkModel]?>) -> Void) {
+        assertionFailure("Not implemented")
+    }
+    func saveDrink(newDrink: DrinkModel, completion: @escaping (VoidResult) -> Void){
+        assertionFailure("Not implemented")
+    }
+    func removeDrink(by id: String, completion: @escaping (VoidResult) -> Void){
+        assertionFailure("Not implemented")
+    }
     
     func getIngredientsList(completion: @escaping (Result<[String]?>) -> Void) {
         guard let url = URL(string: baseURL+ingredientsList) else {return}
@@ -112,7 +121,11 @@ class APIService: ServicesProtocol {
                 do {
                     let decoder = JSONDecoder()
                     let drinks = try decoder.decode(ResultDrinks.self, from: data)
-                    completion(Result.success(drinks.drinks.first))
+                    guard var drink = drinks.drinks.first else {return}
+                    if self.isDrinkExistInDataBase(drinkID: drink.id ?? "") {
+                        drink.isInStorage = true
+                    }
+                    completion(Result.success(drink))
                 } catch let err {
                     print("Err", err)
                 }
@@ -120,5 +133,9 @@ class APIService: ServicesProtocol {
                 completion(Result.failure(error))
             }
         }
+    }
+    private func isDrinkExistInDataBase(drinkID: String) -> Bool {
+        let dataBaseService = DataBaseService()
+        return dataBaseService.isDrinkExistInCoreData(drinkID: drinkID)
     }
 }

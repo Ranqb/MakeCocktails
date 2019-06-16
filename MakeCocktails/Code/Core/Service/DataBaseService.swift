@@ -6,7 +6,7 @@
 //  Copyright © 2019 Andrey Nedov. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreData
 
 class DataBaseService: ServicesProtocol {
@@ -29,28 +29,61 @@ class DataBaseService: ServicesProtocol {
         self.init(context: appDelegate.managedObjectContext)
     }
     
-    // Internal Helpers
-    
-    func fetchAlbums(completion: @escaping (Result<[AlbumDetailsModel?]>) -> Void) {
+    func getIngredientsList(completion: @escaping (Result<[String]?>) -> Void){
+//        backgroundContext.perform {
+//            do {
+//                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Drink")
+//                guard let results = try self.backgroundContext.fetch(fetchRequest) as? [Drink] else { return }
+//                var drinks = results.map { $0.fetch() }
+//                drinks = drinks.sorted(by: { $0.name?.lowercased() ?? "" < $1.name?.lowercased() ?? "" })
+//                completion(Result.success(drinks))
+//            } catch {
+//                completion(Result.failure(error))
+//            }
+//        }
+    }
+
+    func getDrink(by id: String,completion: @escaping (Result<DrinkModel?>) -> Void){
         backgroundContext.perform {
             do {
-                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Album")
-                guard let results = try self.backgroundContext.fetch(fetchRequest) as? [Album] else { return }
-                var albums = results.map { $0.fetch() }
-                albums = albums.sorted(by: { $0.albumName?.lowercased() ?? "" < $1.albumName?.lowercased() ?? "" })
-                completion(Result.success(albums))
+                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Drink")
+                let predicate = NSPredicate(format: "drinkID == %@", id)
+                fetchRequest.predicate = predicate
+                
+                guard let results = try self.backgroundContext.fetch(fetchRequest) as? [Drink] else { return }
+                let drinks = results.map { $0.fetch() }
+                if let drink = drinks.first {
+                    completion(Result.success(drink))
+                } else {
+                    let error = NSError(domain: "", code: 0, userInfo: nil)
+                    completion(Result.failure(error))
+                }
             } catch {
                 completion(Result.failure(error))
             }
         }
     }
     
-    func addAlbum(newAlbum: AlbumDetailsModel, completion: @escaping (VoidResult) -> Void) {
+    func fetchDrinks(completion: @escaping (Result<[DrinkModel]?>) -> Void){
         backgroundContext.perform {
             do {
-                let managedAlbum = NSEntityDescription.insertNewObject(forEntityName: "Album",
-                                                                       into: self.backgroundContext) as! Album
-                managedAlbum.add(newAlbum: newAlbum)
+                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Drink")
+                guard let results = try self.backgroundContext.fetch(fetchRequest) as? [Drink] else { return }
+                var drinks = results.map { $0.fetch() }
+                drinks = drinks.sorted(by: { $0.name?.lowercased() ?? "" < $1.name?.lowercased() ?? "" })
+                completion(Result.success(drinks))
+            } catch {
+                completion(Result.failure(error))
+            }
+        }
+    }
+    
+    func saveDrink(newDrink: DrinkModel, completion: @escaping (VoidResult) -> Void){
+        backgroundContext.perform {
+            do {
+                let managedDrink = NSEntityDescription.insertNewObject(forEntityName: "Drink",
+                                                                       into: self.backgroundContext) as! Drink
+                managedDrink.add(newDrink: newDrink)
                 try self.backgroundContext.save()
                 completion(Result.success(Void()))
             } catch {
@@ -58,14 +91,13 @@ class DataBaseService: ServicesProtocol {
             }
         }
     }
-    
-    func removeAlbum(withID mbid: String, completion: @escaping (VoidResult) -> Void) {
+    func removeDrink(by id: String, completion: @escaping (VoidResult) -> Void){
         backgroundContext.perform {
             do {
-                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Album")
-                let predicate = NSPredicate(format: "albumID == %@", mbid)
+                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Drink")
+                let predicate = NSPredicate(format: "drinkID == %@", id)
                 fetchRequest.predicate = predicate
-                guard let results = try self.backgroundContext.fetch(fetchRequest) as? [Album] else { return }
+                guard let results = try self.backgroundContext.fetch(fetchRequest) as? [Drink] else { return }
                 for object in results {
                     self.backgroundContext.delete(object)
                 }
@@ -77,51 +109,20 @@ class DataBaseService: ServicesProtocol {
         }
     }
     
-    func fetchArtists(with name: String, completion: @escaping (Result<[ArtistModel]?>) -> Void) {
-        fatalError("never shouldn't be called")
+    func getPopularDrinks(completion: @escaping (Result<[DrinkModel]?>) -> Void){
+        assertionFailure("Not implemented")
+    }
+    func getDrinksByName(_ text: String, completion: @escaping (Result<[DrinkModel]?>) -> Void){
+        assertionFailure("Not implemented")
+    }
+    func getDrinksByIngredients(_ text: String, completion: @escaping (Result<[DrinkModel]?>) -> Void){
+        assertionFailure("Not implemented")
     }
     
-    func fetchAlbumsFor(artistID: String, completion: @escaping (Result<[AlbumDetailsModel]?>) -> Void) {
-        backgroundContext.perform {
-            do {
-                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Album")
-                let predicate = NSPredicate(format: "artistID == %@", artistID)
-                fetchRequest.predicate = predicate
-                
-                guard let results = try self.backgroundContext.fetch(fetchRequest) as? [Album] else { return }
-                let albums = results.map { $0.fetch() }
-                completion(Result.success(albums))
-            } catch {
-                completion(Result.failure(error))
-            }
-        }
-    }
-    
-    func fetchAlbumDetailFor(albumID: String, artistID: String, completion: @escaping (Result<AlbumDetailsModel?>) -> Void) {
-        backgroundContext.perform {
-            do {
-                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Album")
-                let predicate = NSPredicate(format: "albumID == %@", albumID)
-                fetchRequest.predicate = predicate
-                
-                guard let results = try self.backgroundContext.fetch(fetchRequest) as? [Album] else { return }
-                let albums = results.map { $0.fetch() }
-                if let album = albums.first {
-                    completion(Result.success(album))
-                } else {
-                    let error = NSError(domain: "", code: 0, userInfo: nil)
-                    completion(Result.failure(error))
-                }
-            } catch {
-                completion(Result.failure(error))
-            }
-        }
-    }
-    
-    func isAlbumExistInCoreData(albumID: String) -> Bool {
+    func isDrinkExistInCoreData(drinkID: String) -> Bool {
         var results: [NSManagedObject] = []
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Album")
-        let predicate = NSPredicate(format: "albumID == %@", albumID)
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Drink")
+        let predicate = NSPredicate(format: "drinkID == %@", drinkID)
         fetchRequest.predicate = predicate
         do {
             results = try backgroundContext.fetch(fetchRequest) as! [NSManagedObject]

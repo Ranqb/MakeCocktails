@@ -3,22 +3,44 @@
     <entity name="Drink" representedClassName="Drink" syncable="YES">
         <attribute name="alcoholic" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fieldsCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="drinkID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="glass" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ingredient1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ingredient2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ingredient3" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ingredient4" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ingredient5" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ingredient6" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ingredient7" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ingredient8" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ingredient9" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ingredient10" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ingredient11" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ingredient12" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ingredient13" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ingredient14" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ingredient15" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isInStorage" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="measure1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="measure2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="measure3" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="measure4" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="measure5" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="measure6" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="measure7" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="measure8" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="measure9" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="measure10" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="measure11" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="measure12" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="measure13" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="measure14" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="measure15" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="recipe" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Ingredients" inverseName="drink" inverseEntity="Ingredients" syncable="YES"/>
-    </entity>
-    <entity name="Ingredients" representedClassName="Ingredients" syncable="YES">
-        <attribute name="measure" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="drink" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Drink" inverseName="ingredients" inverseEntity="Drink" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Drink" positionX="-54" positionY="-9" width="128" height="193"/>
-        <element name="Ingredients" positionX="135.6953125" positionY="-10.3203125" width="128" height="88"/>
+        <element name="Drink" positionX="-54" positionY="-9" width="128" height="615"/>
     </elements>
 </model>

@@ -25,7 +25,7 @@ class DrinksListCell: UICollectionViewCell, NibLoadable {
         
     }
     func configure(_ drink: DisplayedDrink) {
-        drinkImageView.af_setImage(withURL: URL(string: drink.imageURL)!)
+        drinkImageView.af_setImage(withURL: URL(string: drink.imageURL)!, placeholderImage: nil, filter: nil, progress: nil, progressQueue: DispatchQueue.main, imageTransition: .noTransition, runImageTransitionIfCached: true, completion: nil)
         backgroundImageView.af_setImage(withURL: URL(string: drink.imageURL)!)
         drinkNameLabel.text = drink.drinkName
         drinkCategoryLabel.text = drink.category

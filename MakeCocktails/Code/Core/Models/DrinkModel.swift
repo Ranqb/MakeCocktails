@@ -8,26 +8,6 @@
 
 import UIKit
 
-//struct ResultList: Codable {
-//    var drinks: [DrinkList]
-//
-//    enum CodingKeys: String, CodingKey {
-//        case drinks = "drinks"
-//    }
-//}
-//
-//struct DrinkList: Codable {
-//    var id: String?
-//    var name: String?
-//    var thumb: String?
-//    private enum CodingKeys: String, CodingKey {
-//        case id = "idDrink"
-//        case name = "strDrink"
-//        case thumb = "strDrinkThumb"
-//    }
-//}
-
-// Structs to get individual drinks
 struct ResultDrinks: Codable {
     var drinks: [DrinkModel]
     
@@ -76,6 +56,85 @@ struct DrinkModel: Codable {
     var measure13: String?
     var measure14: String?
     var measure15: String?
+    var isInStorage: Bool = false
+
+    init(id: String?,
+         name: String?,
+         category: String?,
+         alcoholic: String?,
+         glass: String?,
+         recipe: String?,
+         imageURL: String?,
+         ingredient1: String?,
+         ingredient2: String?,
+         ingredient3: String?,
+         ingredient4: String?,
+         ingredient5: String?,
+         ingredient6: String?,
+         ingredient7: String?,
+         ingredient8: String?,
+         ingredient9: String?,
+         ingredient10: String?,
+         ingredient11: String?,
+         ingredient12: String?,
+         ingredient13: String?,
+         ingredient14: String?,
+         ingredient15: String?,
+         measure1: String?,
+         measure2: String?,
+         measure3: String?,
+         measure4: String?,
+         measure5: String?,
+         measure6: String?,
+         measure7: String?,
+         measure8: String?,
+         measure9: String?,
+         measure10: String?,
+         measure11: String?,
+         measure12: String?,
+         measure13: String?,
+         measure14: String?,
+         measure15: String?,
+         isInStorage: Bool) {
+        self.id = id
+        self.name = name
+        self.category = category
+        self.alcoholic = alcoholic
+        self.glass = glass
+        self.recipe = recipe
+        self.imageURL = imageURL
+        self.ingredient1 = ingredient1
+        self.ingredient2 = ingredient2
+        self.ingredient3 = ingredient3
+        self.ingredient4 = ingredient4
+        self.ingredient5 = ingredient5
+        self.ingredient6 = ingredient6
+        self.ingredient7 = ingredient7
+        self.ingredient8 = ingredient8
+        self.ingredient9 = ingredient9
+        self.ingredient10 = ingredient10
+        self.ingredient11 = ingredient11
+        self.ingredient12 = ingredient12
+        self.ingredient13 = ingredient13
+        self.ingredient14 = ingredient14
+        self.ingredient15 = ingredient15
+        self.measure1 = measure1
+        self.measure2 = measure2
+        self.measure3 = measure3
+        self.measure4 = measure4
+        self.measure5 = measure5
+        self.measure6 = measure6
+        self.measure7 = measure7
+        self.measure8 = measure8
+        self.measure9 = measure9
+        self.measure10 = measure10
+        self.measure11 = measure11
+        self.measure12 = measure12
+        self.measure13 = measure13
+        self.measure14 = measure14
+        self.measure15 = measure15
+        self.isInStorage = isInStorage
+    }
     
     private enum CodingKeys: String, CodingKey {
         case id = "idDrink"

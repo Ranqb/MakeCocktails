@@ -24,6 +24,7 @@ protocol DrinkDetailDataStore
 {
     var drinkID: String? { get set }
     var ingredient: String? {get set}
+    var isLocal: Bool? {get set}
 }
 
 class DrinkDetailInteractor: DrinkDetailBusinessLogic, DrinkDetailDataStore
@@ -37,12 +38,14 @@ class DrinkDetailInteractor: DrinkDetailBusinessLogic, DrinkDetailDataStore
     
     var drinkID: String?
     var ingredient: String?
+    var isLocal: Bool?
     
     // MARK: Do DrinkDetailBusinessLogic
     
     func fetchDrinkDetail(request: DrinkDetail.FetchDrink.Request) {
         guard let drinkID = drinkID else { return }
-        apiWorker.getDrinkDetail(by: drinkID) { (result) in
+        let worker: DrinkDetailWorker = DrinkDetailWorker(service: isLocal == true ? DataBaseService() : APIService() )
+        worker.getDrinkDetail(by: drinkID) { (result) in
             let response = DrinkDetail.FetchDrink.Response(result: result)
             self.presenter?.presentDrinkDetail(response: response)
         }
@@ -58,22 +61,19 @@ class DrinkDetailInteractor: DrinkDetailBusinessLogic, DrinkDetailDataStore
             switch response.result {
             case .success(let drink):
                 guard let drink = drink else { return }
-                dataBaseWorker.addDrink(newDrink: drink) { (result) in
+                self.dataBaseWorker.saveDrink(newDrink: drink) { (result) in
                     let response = DrinkDetail.SaveDrink.Response(result: result)
                     self.presenter?.presentSaveDrink(response: response)
                 }
             case .failure(let error):
                 self.presenter?.handleError(error)
             }
-            
         }
-
-
     }
     func removeDrink(request: DrinkDetail.RemoveDrink.Request){
-        dataBaseWorker.removeAlbum(withID: request.albumID) { (result) in
-            let response = AlbumDetail.RemoveAlbum.Response(result: result)
-            self.presenter?.presentRemovedAlbum(response: response)
+        dataBaseWorker.removeDrink(by: request.drinkId) { (result) in
+            let response = DrinkDetail.RemoveDrink.Response(result: result)
+            self.presenter?.presentRemoveDrink(response: response)
         }
     }
 }

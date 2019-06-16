@@ -70,20 +70,23 @@ class DrinkDetailViewController: ViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        setupNavigationButton()
         setupTableView()
         getDrink()
     }
     
     // MARK: Private Helpers
-    private func setupNavigationButton(drink: DisplayedDrinkDetail) {
+    private func setupNavigationButton() {
         rightBarButtonItem =
             UIBarButtonItem.init(
-                image:drink.isInStorage ? UIImage(named: "saved") : UIImage(named: "unsaved"),
+                image:UIImage(named: "unsaved"),
                 style: .done, target: self, action: #selector(didPressedStorageButton))
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     
-
+    private func changeRightBarButton(drink: DisplayedDrinkDetail) {
+        rightBarButtonItem?.setBackgroundImage(drink.isInStorage ? UIImage(named: "saved") : UIImage(named: "unsaved"), for: .normal, barMetrics: .default)
+    }
     
     private func setupTableView() {
         tableView.dataSource = self
@@ -115,7 +118,7 @@ class DrinkDetailViewController: ViewController
 extension DrinkDetailViewController: DrinkDetailDisplayLogic{
     func displayDrink(viewModel: DrinkDetail.FetchDrink.ViewModel.Success) {
         displayContent()
-        setupNavigationButton(drink: viewModel.displayedDrink)
+        changeRightBarButton(drink: viewModel.displayedDrink)
         drink = viewModel.displayedDrink
         title = drink?.name
         tableView.reloadData()

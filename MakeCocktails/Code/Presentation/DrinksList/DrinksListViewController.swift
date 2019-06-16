@@ -67,7 +67,7 @@ class DrinksListViewController: ViewController
         super.viewDidLoad()
         self.navigationItem.title = "Search drink"
         fetchDrinks(with: DrinksList.FetchDrinks.default)
-        setupTableView()
+        setupCollectionView()
         setupSearchController()
     }
     
@@ -90,7 +90,7 @@ class DrinksListViewController: ViewController
         }
     }
     
-    private func setupTableView() {
+    private func setupCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(DrinksListCell.self)

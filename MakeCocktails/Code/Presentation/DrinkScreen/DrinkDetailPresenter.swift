@@ -15,6 +15,9 @@ import UIKit
 protocol DrinkDetailPresentationLogic
 {
     func presentDrinkDetail(response: DrinkDetail.FetchDrink.Response)
+    func presentSaveDrink(response: DrinkDetail.SaveDrink.Response)
+    func presentRemoveDrink(response: DrinkDetail.RemoveDrink.Response)
+    func handleError(_ error: Error)
 }
 
 class DrinkDetailPresenter: DrinkDetailPresentationLogic

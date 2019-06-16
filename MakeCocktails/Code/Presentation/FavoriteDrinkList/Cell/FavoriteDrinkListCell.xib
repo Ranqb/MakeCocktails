@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="FavoriteDrinkListCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoriteDrinkListCell" rowHeight="122" id="AKJ-ij-r4a" customClass="FavoriteDrinkListCell" customModule="MakeCocktails" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="420" height="122"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AKJ-ij-r4a" id="LhX-qv-oBe">
+                <rect key="frame" x="0.0" y="0.0" width="420" height="121.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="OSK-Nf-7Av">
+                        <rect key="frame" x="20" y="11" width="380" height="100"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tIY-GX-aGJ">
+                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="0G9-bw-3KE"/>
+                                    <constraint firstAttribute="height" constant="100" id="NqI-O1-4Ao"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lFq-fp-Lgp">
+                                <rect key="frame" x="110" y="0.0" width="270" height="41"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drink" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eL1-Ok-Ujf">
+                                        <rect key="frame" x="113" y="0.0" width="44" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IngredientsI" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2D-pk-SpA">
+                                        <rect key="frame" x="94.5" y="20.5" width="81" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <color key="backgroundColor" red="0.93717283009999997" green="0.93730741740000001" blue="0.93714338539999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="OSK-Nf-7Av" firstAttribute="bottom" secondItem="LhX-qv-oBe" secondAttribute="bottomMargin" id="0sa-pi-bIj"/>
+                    <constraint firstItem="OSK-Nf-7Av" firstAttribute="leading" secondItem="LhX-qv-oBe" secondAttribute="leadingMargin" id="FB4-k8-Y66"/>
+                    <constraint firstItem="OSK-Nf-7Av" firstAttribute="top" secondItem="LhX-qv-oBe" secondAttribute="topMargin" id="LJa-8q-vYb"/>
+                    <constraint firstItem="OSK-Nf-7Av" firstAttribute="trailing" secondItem="LhX-qv-oBe" secondAttribute="trailingMargin" id="iMw-n0-NWT"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="qoh-7M-hbY"/>
+            <connections>
+                <outlet property="drinkImageView" destination="tIY-GX-aGJ" id="Ldr-9g-oy7"/>
+                <outlet property="drinkIngredientsLabel" destination="Z2D-pk-SpA" id="f5G-wG-3rR"/>
+                <outlet property="drinkNameLabel" destination="eL1-Ok-Ujf" id="w5Y-c6-j8V"/>
+            </connections>
+            <point key="canvasLocation" x="33.600000000000001" y="95.352323838080963"/>
+        </tableViewCell>
+    </objects>
+</document>
