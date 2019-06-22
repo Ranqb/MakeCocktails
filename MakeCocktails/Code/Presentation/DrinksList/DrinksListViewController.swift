@@ -66,6 +66,7 @@ class DrinksListViewController: ViewController
     {
         super.viewDidLoad()
         self.navigationItem.title = "Search drink"
+        view.backgroundColor = defaultBackgroundColor
         fetchDrinks(with: DrinksList.FetchDrinks.default)
         setupCollectionView()
         setupSearchController()
@@ -81,7 +82,7 @@ class DrinksListViewController: ViewController
         
         searchBar.sizeToFit()
         searchBar.tintColor = navTextColor
-        searchBar.backgroundColor = navBackgroundColor
+        searchBar.backgroundColor = defaultBackgroundColor
         searchBar.backgroundImage = UIImage()
         searchBar.delegate = self
         guard let firstSubview = searchBar.subviews.first else { return }
@@ -94,6 +95,7 @@ class DrinksListViewController: ViewController
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(DrinksListCell.self)
+        collectionView.backgroundColor = defaultBackgroundColor
     }
     
     // MARK: Do something

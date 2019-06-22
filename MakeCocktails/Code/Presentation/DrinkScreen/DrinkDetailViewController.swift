@@ -69,6 +69,7 @@ class DrinkDetailViewController: ViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        view.backgroundColor = defaultBackgroundColor
         setupNavigationButton()
         setupTableView()
         getDrink()
@@ -94,6 +95,8 @@ class DrinkDetailViewController: ViewController
         tableView.register(DrinkDetailIngredientsCell.self)
         tableView.register(DrinkDetailDescriptionCell.self)
         tableView.tableFooterView = UIView()
+        tableView.backgroundColor = defaultBackgroundColor
+
     }
     
     private func getDrink() {

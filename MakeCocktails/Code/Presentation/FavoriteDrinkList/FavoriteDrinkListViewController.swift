@@ -66,6 +66,7 @@ class FavoriteDrinkListViewController: ViewController
     {
         super.viewDidLoad()
         self.navigationItem.title = "Favorite"
+        view.backgroundColor = defaultBackgroundColor
         fetchDrinks()
         setupTableView()
     }
@@ -82,6 +83,7 @@ class FavoriteDrinkListViewController: ViewController
         tableView.delegate = self
         tableView.register(FavoriteDrinkListCell.self)
         tableView.tableFooterView = UIView(frame: .zero)
+        tableView.backgroundColor = defaultBackgroundColor
     }
     
     // MARK: Do something

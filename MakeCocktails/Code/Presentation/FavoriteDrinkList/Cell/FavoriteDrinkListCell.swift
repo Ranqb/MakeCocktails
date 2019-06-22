@@ -18,9 +18,12 @@ class FavoriteDrinkListCell: UITableViewCell, NibLoadable {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.layer.addShadow()
-        self.drinkImageView.layer.roundCorners(radius: cornerRadius)
-        self.clipsToBounds = true
+        self.contentView.backgroundColor = defaultBackgroundColor
+        layer.shadowColor = UIColor.gray.cgColor
+        layer.shadowOffset = .zero
+        layer.shadowRadius = 3.0
+        layer.shadowOpacity = 0.7
+        self.drinkImageView.layer.cornerRadius = cornerRadius
     }
     
     func configure(_ drink: FavoriteDisplayedDrink) {
